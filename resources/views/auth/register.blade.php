@@ -16,14 +16,14 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        <!-- dep_id -->
-        <div id="dep_id" class="mt-4">
-            <x-input-label for="dep_id" :value="__('dep_id')" />
-            <select id="dep_id" class="block mt-1 w-full" name="dep_id" :value="old('dep_id')" required autofocus autocomplete="dep_id" >
+        <!-- dep_id_str -->
+        <div id="dep_id_str" class="mt-4">
+            <x-input-label for="dep_id_str" :value="__('dep_id_str')" />
+            <select id="dep_id_str" class="block mt-1 w-full" name="dep_id_str" :value="old('dep_id_str')" required autofocus autocomplete="dep_id_str" >
                 <option value="D001">D001</option>
                 <option value="D002">D002</option>
             </select>
-            <x-input-error :messages="$errors->get('dep_id')" class="mt-2" />
+            <x-input-error :messages="$errors->get('dep_id_str')" class="mt-2" />
         </div>
 
         <!-- Email Address -->

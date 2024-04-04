@@ -18,9 +18,13 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('emp_number')->default('1');
-            $table->string('dep_id',4)->default('D001');
+            $table->unsignedBigInteger('dep_id')->default('1');
+            $table->string('dep_id_str',4)->default('D001');
             $table->rememberToken();
             $table->timestamps();
+
+            // リレーションシップ
+            $table->foreign('dep_id')->references('id')->on('departments');
         });
     }
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('comment');
             $table->integer('rating');
-            $table->integer('isbn');
+            $table->string('isbn',20);
             $table->timestamps();
         });
     }

@@ -15,14 +15,14 @@ class DepartmentsTableSeeder extends Seeder
     {
         //
         DB::table('departments')->insert([
-            'dep_id' => 'D001',
+            'dep_id_str' => 'D001',
             'dep_name' => '一般',
             'floor' => 8,
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('departments')->insert([
-            'dep_id' => 'D002',
+            'dep_id_str' => 'D002',
             'dep_name' => 'システム部門',
             'floor' => 10,
             'created_at' => now(),

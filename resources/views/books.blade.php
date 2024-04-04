@@ -12,29 +12,46 @@
                 </div>
 
                 <table>
-		<tr>
-            <th>タイトル</th>
-            <th>著者</th>
-            <th>出版社</th>
-            <th>出版日</th>
-            <th>ジャンル</th>
-            <th>ISBN</th>
-            <th>価格</th>
-            <th>登録日時</th>
-		</tr>
-		@foreach($books as $book)
-		<tr>
-            <td>{{$book->name}}</td>
-			<td>{{$book->book_name}}</td>
-            <td>{{$book->book_author}}</td>
-            <td>{{$book->book_publisher}}</td>
-            <td>{{$book->book_price}}円</td>
-            <td>{{$book->comment}}</td>
-            <td>{{$book->post_date}}</td>
-            <td>{{$book->post_time}}</td>
-		</tr>
-        @endforeach
-	</table>
+                    <tr>
+                        <th>タイトル</th>
+                        <th>著者</th>
+                        <th>出版社</th>
+                        <th>出版日</th>
+                        <th>ジャンル</th>
+                        <th>ISBN</th>
+                        <th>価格</th>
+                        <th>登録日時</th>
+                    </tr>
+                    @foreach($books as $book)
+                    <tr>
+                        <td>{{$book->id}}</td>
+                        <td>{{$book->title}}</td>
+                        <td>{{$book->author}}</td>
+                        <td>{{$book->publisher}}</td>
+                        <td>{{$book->publication_Data}}</td>
+                        <td>{{$book->genre}}</td>
+                        <td>{{$book->isbn}}</td>
+                        <td>{{$book->price}}円</td>
+                        <td>{{$book->created_at}}</td>
+                        <td>{{$book->updated_at}}</td>
+                    </tr>
+                    @endforeach
+                </table>
+
+                <table>
+                    <tr>
+                        <th>名前</th>
+                        <th>部署ID</th>
+                        <th>部署名</th>
+                    </tr>
+                    @foreach($relations as $record)
+                    <tr>
+                        <td>{{$record->name}}</td>
+                        <td>{{$record->dep_id_str}}</td>
+                        <td>{{$record->department->dep_name}}</td>
+                    </tr>
+                    @endforeach
+                </table>
 
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/list">一覧表示</a><br>
