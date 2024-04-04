@@ -1,5 +1,6 @@
 {
     "Name": "名前",
+    "dep_id":"部署ID",
     "Profile": "アカウント",
     "Profile Information": "アカウント情報",
     "Cancel": "キャンセル",

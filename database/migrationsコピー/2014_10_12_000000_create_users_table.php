@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('department_id')->default(001);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('emp_number')->default('1');
-            $table->string('dep_id',4)->default('D001');
             $table->rememberToken();
             $table->timestamps();
         });
