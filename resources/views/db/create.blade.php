@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>書籍管理システム</title>
-</head>
+<x-app-layout>
+    </style>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 <body>
     <h2>本の新規登録</h2>
     <form action="/db/store" method="post">
@@ -30,8 +30,8 @@
         <p>ISBN(書籍番号)</p>
         <input type="text" name="isbn" id="isbn" max="20" pattern="^[0-9]+$">
         <p>金額</p>
-        <input type="number" name="price" id="price" max="11">
+        <input type="number" min="0" name="price" id="price" value="{{old('price',0)}}">
         <input type="submit" value="登録">
     </form>
 </body>
-</html>
+</x-app-layout>

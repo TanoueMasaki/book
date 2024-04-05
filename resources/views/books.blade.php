@@ -48,7 +48,10 @@
                                 <td>{{$book->user->name}}</td>
                                 <td>{{$book->created_at}}</td>
                                 <td>{{$book->updated_at}}</td>
-                                <td><input class="button" type="submit"  value="詳細"></td>
+                                <td>
+                                    <input class="input" type="hidden" name="isbn" value=<?=$book->isbn?>>
+                                    <input class="button" type="submit"  value="詳細">
+                                </td>
                                 
                             </tr>
                         </form>

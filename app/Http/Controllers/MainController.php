@@ -44,7 +44,10 @@ class MainController extends Controller
                     "images" => $images,
                     "imageNum" => $imageNum
                 ]);
-        } elseif ($request->has('books_registration')) {
+
+                // 書籍登録が押されたら
+        }elseif ($request->has('books_registration')) {
+            return view('db.create');
         }
     }
     public function booksDetail(Request $request)
@@ -54,7 +57,7 @@ class MainController extends Controller
         $data = [
             'users' => User::all(),
             `departments` => Department::all(),
-            'reviews' => Review::all()
+            'reviews' => Review::all()->where('isbn_id', $request->isbn)
         ];
 
         $books = Book::all()->where('isbn', $request->isbn);
