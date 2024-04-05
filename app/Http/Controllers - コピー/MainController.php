@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Models\Department;
-use App\Models\User;
 use App\Models\Book;
+
+use App\Models\User;
+use App\Models\Department;
 use App\Models\Review;
 
 class MainController extends Controller
 {
-    public function books(Request $request)
-    {
-
+    public function books(Request $request){
+        
         // 書籍一覧表示が押されたら
         if ($request->has('books')) {
 
@@ -24,7 +23,7 @@ class MainController extends Controller
                 `departments` => Department::all(),
                 'relations' => User::all()
             ];
-
+            
             // 分類イメージ画像を配列に入れる
             $images = [
                 asset('/data/image/no_image.png'),
@@ -36,25 +35,29 @@ class MainController extends Controller
                 asset('/data/image/music.png')
             ];
             $imageNum = 0;
+            
 
+            return view('books',$data)
+            ->with([
+                "books" => $books,
+                "images" => $images,
+                "imageNum" => $imageNum
+            ]);
 
-            return view('books', $data)
-                ->with([
-                    "books" => $books,
-                    "images" => $images,
-                    "imageNum" => $imageNum
-                ]);
-        } elseif ($request->has('books_registration')) {
+        // 書籍登録が押されたら
+        }elseif ($request->has('books_registration')) {
+            return view('db.create');
         }
     }
-    public function booksDetail(Request $request)
-    {
+    public function booksDetail(Request $request){
 
         $isbn = $request->isbn;
+
         $data = [
             'users' => User::all(),
             `departments` => Department::all(),
-            'reviews' => Review::all()
+            'relations' => User::all(),
+            'relations2' => Review::all()
         ];
 
         $books = Book::all()->where('isbn', $request->isbn);

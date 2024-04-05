@@ -1,14 +1,4 @@
 <x-app-layout>
-    <style>
-        th{width:200px}
-        table,
-        table th,
-        table td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 5px 10px 0 10px;
-        }
-    </style>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
@@ -19,6 +9,9 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 
 
+            <?php
+            echo "$isbn"
+            ?>
                 <table>
                     <tr>
                         <th></th>
@@ -29,33 +22,44 @@
                         <th>ジャンル</th>
                         <th>ISBN</th>
                         <th>価格</th>
-                        <th>登録者</th>
                         <th>登録日時</th>
-                        <th></th>
+                        <th>更新日時</th>
                     </tr>
+
                     @foreach($books as $book)
-                        <form action="/book/public/books_detail" method="post">
-                        @csrf
-                            <tr>
-                                <td>{{$book->id}}</td>
-                                <td>{{$book->title}}</td>
-                                <td>{{$book->author}}</td>
-                                <td>{{$book->publisher}}</td>
-                                <td>{{$book->publication_Data}}</td>
-                                <td>{{$book->genre}}</td>
-                                <td>{{$book->isbn}}</td>
-                                <td>{{$book->price}}円</td>
-                                <td>{{$book->user->name}}</td>
-                                <td>{{$book->created_at}}</td>
-                                <td>{{$book->updated_at}}</td>
-                                <td><input class="button" type="submit"  value="詳細"></td>
-                                
-                            </tr>
-                        </form>
+                    <tr>
+                        <td>{{$book->id}}</td>
+                        <td>{{$book->title}}</td>
+                        <td>{{$book->author}}</td>
+                        <td>{{$book->publisher}}</td>
+                        <td>{{$book->publication_Data}}</td>
+                        <td>{{$book->genre}}</td>
+                        <td>{{$book->isbn}}</td>
+                        <td>{{$book->price}}円</td>
+                        <td>{{$book->created_at}}</td>
+                        <td>{{$book->updated_at}}</td>
+                    </tr>
                     @endforeach
                 </table>
 
-                <!-- name=<?=$book->id?> -->
+                <table>
+                    <tr>
+                        <th>おすすめ度</th>
+                        <th>コメント</th>
+                        <th>投稿者</th>
+                        <th>部署名</th>
+                        <th>投稿日</th>
+                    </tr>
+                    @foreach($relations2 as $record)
+                    <tr>
+                        <td>{{$record->name}}</td>
+                        <td>{{$record->dep_id_str}}</td>
+                        <td>{{$record->users->department->dep_name}}</td>
+                    </tr>
+                    @endforeach
+
+                    
+                </table>
 
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/list">一覧表示</a><br>

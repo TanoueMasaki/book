@@ -10,10 +10,11 @@
         
     </head>
     <body class="antialiased">
-        
-            <h2>書籍管理システム</h2><hr>
+        <div class="login">
+            <p>書籍管理システム</p><hr>
             <!-- <img src="{{ asset('') }}" alt=""> -->
             <a href="{{ route('register') }}">新規登録</a>
             <a href="{{ route('login') }}">ログイン</a>
+        </div>
     </body>
 </html>

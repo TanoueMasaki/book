@@ -7,11 +7,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
+    protected $table = 'users';
+
     use HasApiTokens, HasFactory, Notifiable;
+
+    // departmentsとのリレーションシップ（多対1）
+    // メソッド名は単数形
+    // 第二引数は接続先のカラム名を入れる
+    public function department(){
+        return $this->belongsTo(Department::class,'dep_id');
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -46,13 +54,5 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function book(){
-        return $this->hasMany(Book::class,'id');
-    }
-    public function review(){
-        return $this->hasMany(Review::class,'id');
-    }
-    public function department(){
-        return $this->belongsTo(Department::class,'dep_id');
-    }
+    
 }

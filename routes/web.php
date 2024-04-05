@@ -25,6 +25,8 @@ Route::get('/dashboard', function () {
 
 Route::post('/books',[MainController::class, 'books'])
 ->middleware(['auth', 'verified'])->name('books');
+Route::post('/books_detail',[MainController::class, 'booksDetail'])
+->middleware(['auth', 'verified'])->name('booksDetail');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

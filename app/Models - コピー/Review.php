@@ -9,10 +9,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    public function book(){
-        return $this->belongsTo(Book::class,'isbn_id');
-    }
-    public function user(){
+    public function users(){
         return $this->belongsTo(User::class,'user_id');
     }
 }

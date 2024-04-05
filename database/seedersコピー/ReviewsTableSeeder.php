@@ -17,24 +17,21 @@ class ReviewsTableSeeder extends Seeder
         DB::table('reviews')->insert([
             'comment' => 'SQLについてよくわかった',
             'rating' => '4',
-            'isbn_id' => '9784800712349',
-            'user_id' => '1',
+            'isbn' => '9784800712349',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('reviews')->insert([
             'comment' => 'おかげでITパスポート試験に合格した',
             'rating' => '5',
-            'isbn_id' => '9784815624255',
-            'user_id' => '1',
+            'isbn' => '9784815624255',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         DB::table('reviews')->insert([
             'comment' => 'TOEICの点数がかなり上がった',
             'rating' => '5',
-            'isbn_id' => '9784023310650',
-            'user_id' => '1',
+            'isbn' => '9784023310650',
             'created_at' => now(),
             'updated_at' => now()
         ]);

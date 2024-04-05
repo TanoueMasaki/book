@@ -18,9 +18,12 @@ return new class extends Migration
             $table->string('publisher');
             $table->date('publication_Date');
             $table->string('genre');
-            $table->string('isbn',20);
+            $table->BigInteger('isbn')->unique();
             $table->integer('price');
+            $table->unsignedBigInteger('con_id');
             $table->timestamps();
+
+            $table->foreign('con_id')->references('id')->on('users');
         });
     }
 

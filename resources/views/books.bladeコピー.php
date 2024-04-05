@@ -29,9 +29,8 @@
                         <th>ジャンル</th>
                         <th>ISBN</th>
                         <th>価格</th>
-                        <th>登録者</th>
                         <th>登録日時</th>
-                        <th></th>
+                        <th>更新日時</th>
                     </tr>
                     @foreach($books as $book)
                         <form action="/book/public/books_detail" method="post">
@@ -45,7 +44,6 @@
                                 <td>{{$book->genre}}</td>
                                 <td>{{$book->isbn}}</td>
                                 <td>{{$book->price}}円</td>
-                                <td>{{$book->user->name}}</td>
                                 <td>{{$book->created_at}}</td>
                                 <td>{{$book->updated_at}}</td>
                                 <td><input class="button" type="submit"  value="詳細"></td>

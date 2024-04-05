@@ -21,9 +21,8 @@ class BooksTableSeeder extends Seeder
             'publisher' => 'ソーテック社',
             'publication_Date' => '2022-03-10',
             'genre' => 'コンピュータ(コンピューティング)＆IT(情報技術)',
-            'isbn' => 9784800712349,
-            'price' => 1980,
-            'con_id' => 1,
+            'isbn' => '9784800712349',
+            'price' => '1980',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -33,9 +32,8 @@ class BooksTableSeeder extends Seeder
             'publisher' => 'SBクリエイティブ',
             'publication_Date' => '2023-12-15',
             'genre' => 'コンピュータ(コンピューティング)＆IT(情報技術)',
-            'isbn' => 9784815624255,
-            'price' => 1760,
-            'con_id' => 1,
+            'isbn' => '9784815624255',
+            'price' => '1760',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -45,9 +43,8 @@ class BooksTableSeeder extends Seeder
             'publisher' => '朝日新聞出版',
             'publication_Date' => '2012-03-07',
             'genre' => '言語、言語学',
-            'isbn' => 9784023310650,
-            'price' => 890,
-            'con_id' => 1,
+            'isbn' => '9784023310650',
+            'price' => '890',
             'created_at' => now(),
             'updated_at' => now()
         ]);

@@ -11,12 +11,12 @@
                     {{ Auth::user()-> name}}さんで{{ __("You're logged in!") }}
                 </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="/laravel/book/public/books" method="post">
+                    <form action="/book/public/books" method="post">
                         @csrf
                         <input class="button" type="submit" name="books" value="書籍一覧">
                         <!-- dep_idがD002だけ書籍登録画面へのリンクを表示する -->
                         @if(Auth::user()-> dep_id==="D001")
-                            @elseif(Auth::user()-> dep_id==="D002")
+                            @elseif(Auth::user()-> dep_id===2)
                             <input class="button" type="submit" name="books_registration" value="書籍登録">
                         @endif
                     </form>   

@@ -15,11 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('department_id')->default(001);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('emp_number')->default('1');
+            $table->unsignedBigInteger('dep_id');
+            $table->string('dep_id_str',4);
             $table->rememberToken();
             $table->timestamps();
+
+            // リレーションシップ
+            $table->foreign('dep_id')->references('id')->on('departments');
         });
     }
 
