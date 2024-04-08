@@ -46,6 +46,7 @@ Route::post('/db/deleteOrUpdate',[MainController::class, 'deleteOrUpdate'])
 ->middleware(['auth', 'verified'])->name('deleteOrUpdate');
 Route::post('/db/remove',[MainController::class, 'remove'])
 ->middleware(['auth', 'verified'])->name('remove');
+
 Route::post('/db/update',[MainController::class, 'update'])
 ->middleware(['auth', 'verified'])->name('update');
 Route::post('/db/updateEnd',[MainController::class, 'updateEnd'])

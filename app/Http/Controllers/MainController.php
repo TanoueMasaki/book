@@ -129,6 +129,7 @@ class MainController extends Controller
         // 削除ボタンが押されたら
         if ($request->has('bookDataDelete')) {
             $checkedId = $request->checkedId;
+
             // セッションに$checkedIdを一旦保存しておく
             $request->session()->put('checkedId',$checkedId);
             
@@ -163,7 +164,7 @@ class MainController extends Controller
             // 複数条件での検索はwhereInで出来る
             $books = Book::all()->whereIn('id', $checkedId);
 
-            return view('userOnly.update')
+            return view('db.update')
             ->with([
                 "books" => $books
             ]);
@@ -174,9 +175,22 @@ class MainController extends Controller
     public function remove(Request $request){
         // セッションに'checkedId'があれば削除する
         if($request->session()->has('checkedId')){
+
             $checkedId = $request->session()->get('checkedId');
+
+            // チェックされたレコードからisbnを取り出して配列に入れる
+            $books = Book::all()->whereIn('id', $checkedId);
+            $isbn = [];
+            foreach($books as $book){
+                array_push($isbn,$book->isbn);
+            }
+
+            // 先にReviewから削除（リレーションシップがあるため）
+            $review = Review::whereIn('isbn_id', $isbn)->delete();
+            // 次にBookを削除
             $books = Book::whereIn('id', $checkedId)->delete();
-            // セッションの'checkedId'を消去する
+
+            // セッションの'checkedId'と'isbn'を消去する
             $request->session()->forget('checkedId');
         }
             
@@ -187,15 +201,15 @@ class MainController extends Controller
     public function update(Request $request){
 
         // バリデーションチェック
-        $input = $request->validate([
-            "title" => 'required | string',
-            "author" => 'required | string',
-            "publisher" => 'required | string',
-            "publication_Date" => 'required',
-            "genre" => 'required | string',
-            "isbn" => 'required | integer | digits_between:10,13 | unique:books,isbn',
-            "price" => 'integer | min:0'
-        ]);
+        // $input = $request->validate([
+        //     "title" => 'required | string',
+        //     "author" => 'required | string',
+        //     "publisher" => 'required | string',
+        //     "publication_Date" => 'required',
+        //     "genre" => 'required | string',
+        //     "isbn" => 'required | integer | digits_between:10,13 | unique:books,isbn',
+        //     "price" => 'integer | min:0'
+        // ]);
         
             
             $checkedId = $request->session()->get('checkedId');

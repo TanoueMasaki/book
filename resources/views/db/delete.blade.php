@@ -22,7 +22,6 @@
         <table class="main_table">
             <thead>
                 <tr>
-                    <th></th>
                     <th>タイトル</th>
                     <th>著者</th>
                     <th>出版社</th>

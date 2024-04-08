@@ -1,5 +1,5 @@
 <x-app-layout>
-    <link rel="stylesheet" href="{{ asset('/css/style_userOnly_update.css')  }}">
+    <link rel="stylesheet" href="{{ asset('/css/style_db_update.css')  }}">
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -31,86 +31,75 @@
                         <th class="none"></th>
                         <th class="short">id</th>
                         <th class="long">タイトル</th>
-                        <th class="long">著者</th>
+                        <th class="long" >著者</th>
                         <th class="long">出版社</th>
-                        <th>分類</th>
+                        <th class="long">出版日</th>
+                        <th>ジャンル</th>
+                        <th class="long">ISBN</th>
                         <th>価格</th>
-                        <th>URL</th>
-                        <th class="long">コメント</th>
-                        <th>投稿日</th>
-                        <th>投稿時間</th>
-                        <th class="long">公開設定</th>
+                        <th class="short">登録者id</th>
+                        <th>登録日時</th>
+                        <th>更新日時</th>
                     </tr>
                 </thead>
                 </table>
-            @foreach($items as $item)
+            @foreach($books as $book)
             <table class="main_table">
                 <tbody>
                     <tr>
                         <td class="none">現在データ:</td>
-                        <td class="short">{{$item->id}}</td>
-                        <td class="long">{{$item->book_name}}</td>
-                        <td class="long">{{$item->book_author}}</td>
-                        <td class="long">{{$item->book_publisher}}</td>
-                        <td >{{$item->classification}}</td>
-                        <td >{{$item->book_price}}円</td>
-                        <!-- URLが未入力なら空白にする -->
-                        @if($item->book_url === null)
-                            <td></td>
-                            @else
-                            <td><a href=<?=$item->book_url ?> target="_top">link</a></td>
-                        @endif           
-                        <td class="long">{{$item->comment}}</td>
-                        <td >{{$item->post_date}}</td>
-                        <td >{{$item->post_time}}</td>
-                        <td class="long">{{$item->publishing_settings}}</td>
+                        <td class="short">{{$book->id}}</td>
+                        <td class="long">{{$book->title}}</td>
+                        <td class="long">{{$book->author}}</td>
+                        <td class="long">{{$book->publisher}}</td>
+                        <td class="long">{{$book->publication_Date}}</td>
+                        <td>{{$book->genre}}</td>        
+                        <td class="long">{{$book->isbn}}</td>
+                        <td>{{$book->price}}</td>
+                        <td class="short">{{$book->con_id}}</td>
+                        <td>{{$book->created_at}}</td>
+                        <td>{{$book->updated_at}}</td>
                     </tr>
                 </tbody>
             </table>
             <!-- input_table -->
             
-            <form action="/recommendedbooks/public/userOnly/update" method="post">
+            <form action="/book/public/db/update" method="post">
                 @csrf
                 <table class="input_table">
                     <tr>
                         <td class="none">更新データ:</td>
-                        <td class="short"><input type="text" name="id" value="{{$item->id}}" hidden></td>
-                        <td class="long"><input type="text" name="book_name" value="{{$item->book_name}}" required></td>
-                        <td class="long"><input type="text" name="book_author" value="{{$item->book_author}}" required></td>
-                        <td class="long"><input type="text" name="book_publisher" value="{{$item->book_publisher}}" required></td>
+                        <td class="short"><input type="text" name="id" value="{{$book->id}}" hidden></td>
+                        <td class="long"><input type="text" name="title" value="{{$book->title}}" required></td>
+                        <td class="long"><input type="text" name="author" value="{{$book->author}}" required></td>
+                        <td class="long"><input type="text" name="publisher" value="{{$book->publisher}}" required></td>
+                        <td class="long"><input type="text" name="publication_Date" value="{{$book->publication_Date}}" required></td>
                         <td>
                             <!-- 分類選択肢 -->
-                            <select name="classification" required>
-                                @foreach (Config::get('pulldown.pulldown_name') as $key => $val)
-                                    @if($item->classification===$key)
-                                    <option value="{{ $key }}" selected>{{ $val }}</option>
-                                    @else
-                                    <option value="{{ $key }}">{{ $val }}</option>
-                                    @endif
-                                @endforeach
+                            <select name="genre" required>
+                                <option hidden >選択して下さい</option>
+                                <option value="文芸書" @if("文芸書" === old('genre'))  selected @endif>文芸書</option>
+                                <option value="実用書" @if("実用書" === old('genre'))  selected @endif>実用書</option>
+                                <option value="専門書" @if("専門書" === old('genre'))  selected @endif>専門書</option>
+                                <option value="雑誌" @if("雑誌" === old('genre'))  selected @endif>雑誌</option>
+                                <option value="漫画" @if("漫画" === old('genre'))  selected @endif>漫画</option>
+                                <option value="絵本" @if("絵本" === old('genre'))  selected @endif>絵本</option>
+                                <option value="その他" @if("その他" === old('genre'))  selected @endif>その他</option>
                             </select>
                         </td>
-                        <td><input type="number" min="0" name="book_price" value="{{$item->book_price}}"></td>
-                        <td><input type="url" name="book_url" value="{{$item->book_url}}"></td>
-                        <td class="long"><input type="text" name="comment" value="{{$item->comment}}"></td>
+                        <td class="long"><input type="text" min="0" name="isbn" value="{{$book->isbn}}"></td>
+                        <td><input type="number" name="price" value="{{$book->price}}"></td>
+                        <td class="short"><input type="text" name="con_id" value="{{$book->con_id}}"></td>
                         <td></td>
                         <td></td>
-                        <td class="long">
-                            @if($item->publishing_settings==="private")
-                                <input class="radio" type="radio" name="publishing_settings" value="private" required checked>Private
-                                <input class="radio" type="radio" name="publishing_settings" value="public" required>Public
-                                @else
-                                <input class="radio" type="radio" name="publishing_settings" value="private" required>Private
-                                <input class="radio" type="radio" name="publishing_settings" value="public" required checked>Public
-                            @endif
-                        </td>
+                        
                     </tr>
                 </table>
                 <input class="button" type="submit" name="bookDataUpdate" value="実行">
             </form>
             @endforeach
         </div>
-        <form action="/laravel/recommendedbooks/public/userOnly/updateEnd" method="post">
+        <form action="/book/public/db/updateEnd" method="post">
         @csrf
         <input class="endButton" type="submit" name="updateEnd" value="更新を終了する">
     </form>
