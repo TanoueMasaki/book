@@ -138,5 +138,12 @@
     "per page": "毎ページ",
     "results": "件",
     "to": "から",
-    "Showing": "表示中："
+    "Showing": "表示中：",
+
+    "top_page": "TOPページ",
+    "book_list": "書籍一覧",
+    "book_sign_up": "書籍新規登録",
+    "review_registration": "書籍レビュー登録",
+    "book_detail": "書籍詳細",
+    "completion_of_registration": "書籍登録完了"
 }

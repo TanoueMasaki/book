@@ -1,17 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('book_detail') }}
         </h2>
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-
-
-                <?php
-                echo "$isbn"
-                ?>
                 <table>
                     <tr>
                         <th></th>
@@ -65,12 +60,8 @@
                 </table>
 
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <a href="/list">一覧表示</a><br>
-                    <!-- dep_idがD002だけ書籍登録画面へのリンクを表示する -->
-                    @if(Auth::user()-> dep_id==="D001")
-                    @elseif(Auth::user()-> dep_id==="D002")
-                    <a href="/db/create">データ登録</a>
-                    @endif
+                    <a href="/list">一覧表示へ戻る</a><br>
+                    <a href="/db/create">レビュー登録</a>
                 </div>
             </div>
         </div>

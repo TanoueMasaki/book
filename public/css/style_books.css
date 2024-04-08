@@ -1,0 +1,91 @@
+/* スクロール用 */
+div.scroll_table{
+    margin: 0 auto;
+    width: 95%;
+    max-height: 500px;
+    overflow:auto;
+}
+/* インプットテーブル */
+form{
+    width: 100%;
+    text-align: center;
+}
+/* フォーム */
+form{
+    text-align: center;
+}
+/* エラーメッセージ */
+.errors{
+    color: #ff6060;
+    font-weight:bold;
+    font-size: 24px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+}
+/* メインテーブル */
+table.main_table{
+    width: 100%;
+    background: #ffffff;
+}
+table.main_table th,table.main_table td{
+    overflow-wrap: break-word;
+    padding-top: 5px;
+    width: 6%;
+    min-width: 60px;
+    max-width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    border-top: 1px solid rgb(82, 81, 81);
+    border-right: 1px solid rgb(82, 81, 81);
+    border-left: 1px solid rgb(82, 81, 81);
+    border-collapse: collapse;
+    font-size: 12px;
+}
+table.main_table img{
+    margin: 0 auto;
+    width: 50px;
+    height:50px;
+}
+table.main_table td{
+    border-bottom: 1px solid rgb(82, 81, 81);
+}
+
+table.main_table td{
+    border-top: 1px solid rgb(82, 81, 81);
+}
+table.main_table th{
+    position: sticky;
+    background: #e2e0f8;
+    top: 0;
+    left: 0;
+}
+table.main_table th.long,table.main_table td.long{
+    width: 12%;
+    min-width: 120px;
+    max-width: 150px;
+}
+table.main_table th.short,table.main_table td.short{
+    width: 4%;
+    min-width: 30px;
+    max-width: 50px;
+}
+/* ボタン */
+input.button{
+    width: 80%;
+    margin: 5px;
+    padding: 3px 5px 3px 5px;
+  
+    border-radius: 20%;
+    background: #ebebff;
+}
+input.button:hover{
+    background-color: #838ac6;
+    color: #cbcbcb;
+    transition: .2s;
+}
+
+
+
+
+

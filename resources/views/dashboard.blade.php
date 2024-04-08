@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('top_page') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -11,15 +11,18 @@
                     {{ Auth::user()-> name}}さんで{{ __("You're logged in!") }}
                 </div>
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action="/book/public/books" method="post">
+                    <form action="/book/public/books" method="get">
                         @csrf
                         <input class="button" type="submit" name="books" value="書籍一覧">
-                        <!-- dep_idがD002だけ書籍登録画面へのリンクを表示する -->
-                        @if(Auth::user()-> dep_id==="D001")
-                            @elseif(Auth::user()-> dep_id===2)
-                            <input class="button" type="submit" name="books_registration" value="書籍登録">
-                        @endif
+                    </form>
+                    <!-- dep_idがD002だけ書籍登録画面へのリンクを表示する -->
+                    @if(Auth::user()-> dep_id===1)
+                    @elseif(Auth::user()-> dep_id===2)
+                    <form action="/book/public/db/create" method="get">
+                        @csrf
+                        <input class="button" type="submit" name="books_registration" value="書籍登録">
                     </form>   
+                    @endif
                 </div>
             </div>
         </div>
