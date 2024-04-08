@@ -21,10 +21,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboardGet');
 Route::post('/dashboard', function () {
-    return redirect()->route('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboardPost');
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/books',[MainController::class, 'books'])
 ->middleware(['auth', 'verified'])->name('books');
