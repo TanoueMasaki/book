@@ -5,29 +5,36 @@
             {{ __('book_list') }}
         </h2>
     </x-slot>
+
+    @if(session('errorMessage')===null)
+    @else
+    <p id="errorMessage">{{session('errorMessage')}}</p>
+    @endif
+    
         <div class="scroll_table">
-            <table class="main_table">
-                <thead>
-                    <tr>
-                        <th class="short"></th>
-                        <th class="short"></th>
-                        <th class="long">タイトル</th>
-                        <th>著者</th>
-                        <th class="long">出版社</th>
-                        <th>出版日</th>
-                        <th>ジャンル</th>
-                        <th>ISBN</th>
-                        <th class="short">価格</th>
-                        <th class="short">登録者</th>
-                        <th>登録日時</th>
-                        <th>更新日時</th>
-                        <th class="short"></th>
-                    </tr>
-                </thead>
-                @foreach($books as $book)
-                <tbody>
+            <form action="/book/public/db/deleteOrUpdate" method="post">
+            @csrf
+                <table class="main_table">
+                    <thead>
+                        <tr>
+                            <th class="short"></th>
+                            <th class="short"></th>
+                            <th class="long">タイトル</th>
+                            <th>著者</th>
+                            <th class="long">出版社</th>
+                            <th>出版日</th>
+                            <th>ジャンル</th>
+                            <th>ISBN</th>
+                            <th class="short">価格</th>
+                            <th class="short">登録者</th>
+                            <th>登録日時</th>
+                            <th>更新日時</th>
+                            <th class="short"></th>
+                        </tr>
+                    </thead>
+                    @foreach($books as $book)
                     <form action="/book/public/books_detail" method="post">
-                    @csrf
+                    <tbody>
                         <tr>
                             <td class="short"><input type="checkbox" name="checkedId[]" value=<?=$book->id?> ></td>
                             <td class="short">{{$book->id}}</td>
@@ -43,12 +50,16 @@
                             <td>{{$book->updated_at}}</td>
                             <td class="short">
                                 <input class="input" type="hidden" name="isbn" value=<?=$book->isbn?>>
-                                <input class="button" type="submit"  value="詳細">
+                                <input class="buttonDetail" type="submit"  value="詳細">
                             </td>
                         </tr>
+                    </tbody>
                     </form>
-                </tbody>
-                @endforeach
-            </table>
+                    @endforeach
+                </table>
+                <input class="button" type="submit" name="bookDataDelete" value="削除">
+                <input class="button" type="submit" name="bookDataUpdate" value="編集">
+                <input class="button" type="reset" value="リセット">
+            </form>
         </div>
 </x-app-layout>

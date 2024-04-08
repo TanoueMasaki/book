@@ -71,18 +71,31 @@ table.main_table th.short,table.main_table td.short{
     max-width: 50px;
 }
 /* ボタン */
-input.button{
+input.buttonDetail{
     width: 80%;
     margin: 5px;
     padding: 3px 5px 3px 5px;
-  
     border-radius: 20%;
     background: #ebebff;
+}
+input.buttonDetail:hover{
+    background-color: #838ac6;
+    color: #cbcbcb;
+    transition: .2s;
+}
+input.button{
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px 5px 3px 5px;
+    /* border: 1px solid rgb(116, 116, 116); */
+    border-radius: 20%;
+    background: #b7b8e9;
 }
 input.button:hover{
     background-color: #838ac6;
     color: #cbcbcb;
-    transition: .2s;
+    transition: .3s;
 }
 
 

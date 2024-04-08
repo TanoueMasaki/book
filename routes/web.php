@@ -42,6 +42,15 @@ Route::post('/db/create',[MainController::class, 'created'])
 Route::post('/db/store',[MainController::class, 'stored'])
 ->middleware(['auth', 'verified'])->name('store');
 
+Route::post('/db/deleteOrUpdate',[MainController::class, 'deleteOrUpdate'])
+->middleware(['auth', 'verified'])->name('deleteOrUpdate');
+Route::post('/db/remove',[MainController::class, 'remove'])
+->middleware(['auth', 'verified'])->name('remove');
+Route::post('/db/update',[MainController::class, 'update'])
+->middleware(['auth', 'verified'])->name('update');
+Route::post('/db/updateEnd',[MainController::class, 'updateEnd'])
+->middleware(['auth', 'verified'])->name('updateEnd');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

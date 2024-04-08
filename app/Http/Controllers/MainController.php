@@ -118,9 +118,115 @@ class MainController extends Controller
     return view('db.store',$inputData);
     }
 
+    // データの削除or更新(DELETE or UPDATE)
+    public function deleteOrUpdate(Request $request){
+
+        if($request->checkedId===null){
+            return redirect()->route('booked')
+            ->with('errorMessage','チェックして下さい');
+        }
+
+        // 削除ボタンが押されたら
+        if ($request->has('bookDataDelete')) {
+            $checkedId = $request->checkedId;
+            // セッションに$checkedIdを一旦保存しておく
+            $request->session()->put('checkedId',$checkedId);
+            
+            // 複数条件での検索はwhereInで出来る
+            $books = Book::all()->whereIn('id', $checkedId);
+
+            // 分類イメージ画像を配列に入れる
+            $images = [
+                asset('/data/image/no_image.png'),
+                asset('/data/image/comic.png'),
+                asset('/data/image/doujinshi.png'),
+                asset('/data/image/ehon.png'),
+                asset('/data/image/fashion.png'),
+                asset('/data/image/meigensyu.png'),
+                asset('/data/image/music.png')
+            ];
+            $imageNum = 0;
+
+            return view('db.delete')
+            ->with([
+                "books" => $books,
+                "images" => $images,
+                "imageNum" => $imageNum
+            ]);
+
+        // 更新ボタンが押されたら
+        } elseif ($request->has('bookDataUpdate')) {
+            $checkedId = $request->checkedId;
+            // セッションに$checkedIdを一旦保存しておく
+            $request->session()->put('checkedId',$checkedId);
+            
+            // 複数条件での検索はwhereInで出来る
+            $books = Book::all()->whereIn('id', $checkedId);
+
+            return view('userOnly.update')
+            ->with([
+                "books" => $books
+            ]);
+        } 
+    }
+
+    // データの削除実行(REMOVE)
+    public function remove(Request $request){
+        // セッションに'checkedId'があれば削除する
+        if($request->session()->has('checkedId')){
+            $checkedId = $request->session()->get('checkedId');
+            $books = Book::whereIn('id', $checkedId)->delete();
+            // セッションの'checkedId'を消去する
+            $request->session()->forget('checkedId');
+        }
+            
+        return redirect()->route('books');
+    }
+
+    // データの更新実行(UPDATE)
+    public function update(Request $request){
+
+        // バリデーションチェック
+        $input = $request->validate([
+            "title" => 'required | string',
+            "author" => 'required | string',
+            "publisher" => 'required | string',
+            "publication_Date" => 'required',
+            "genre" => 'required | string',
+            "isbn" => 'required | integer | digits_between:10,13 | unique:books,isbn',
+            "price" => 'integer | min:0'
+        ]);
+        
+            
+            $checkedId = $request->session()->get('checkedId');
+            $books = Book::find($request->id);
+
+            $books->title = $request->title;
+            $books->author = $request->author;
+            $books->publisher = $request->publisher;
+            $books->publication_Date = $request->publication_Date;
+            $books->genre = $request->genre;
+            $books->isbn = $request->isbn;
+            $books->price = $request->price;
+            $books->con_id = $request->con_id;  
+            $books->save();
+            
+            $books = Book::all()->whereIn('id', $checkedId);
+            return view('db.update')
+            ->with([
+                "books" => $books
+            ]);
+    }
+    public function updateEnd(Request $request){
+        // セッションに'checkedId'があれば実行する
+        if($request->session()->has('checkedId')){
+            // セッションの'checkedId'を消去する
+            $request->session()->forget('checkedId');
+        }
+        return redirect()->route('books');
+    }
 
 
-// リダイレクトはルートのnameを入れる
-// return redirect()->route('privateGet');
+
 
 }
