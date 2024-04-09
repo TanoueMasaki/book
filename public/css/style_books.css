@@ -1,10 +1,31 @@
 /* スクロール用 */
-div.scroll_table{
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+}
+div.min-h-screen bg-gray-100 dark:bg-gray-900{
+    margin: 0;
+    padding: 0;
+}
+main{
+    height: 100%;
+    width: 100%;
+    /* background-image: url(/book/public/data/image/book1.JPG);
+    background-size: cover;
+    background-repeat: no-repeat; */
+    background-color: #bcbac9;
     margin: 0 auto;
-    width: 95%;
-    max-height: 800px;
+    padding: 0;
+    
+}
+div.scroll_table{
+    height: 95%;
     overflow:auto;
+    width: 95%;
     display: flex;
+    margin: 0 auto;
 }
 /* インプットテーブル */
 form{
@@ -30,7 +51,7 @@ table.check_table{
 }
 table.check_table th{
     position: sticky;
-    background: rgb(243,244,246);
+    background: #bcbac9;
     top: 0;
     left: 0;
     height: 30px;
@@ -46,9 +67,8 @@ table.check_table th{
 input#checkButtonDe{
     width: 200px;
     position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 20%;
+    top: 90px;
+    left: 300px;
     margin: 0 auto;
     border-radius: 5%;
     background: rgb(213, 213, 253);
@@ -59,9 +79,8 @@ input#checkButtonDe{
 input#checkButtonUp{
     width: 200px;
     position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
+    top: 90px;
+    left: 600px;
     margin: 0 auto;
     border-radius: 5%;
     background: rgb(213, 213, 253);
@@ -72,9 +91,8 @@ input#checkButtonUp{
 input#checkButtonRe{
     width: 200px;
     position: absolute;
-    bottom: 20px;
-    left: 20%;
-    right: 0;
+    top: 90px;
+    left: 900px;
     margin: 0 auto;
     border-radius: 5%;
     background: rgb(213, 213, 253);

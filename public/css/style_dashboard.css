@@ -1,18 +1,18 @@
 main{
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }
 img.top{
-    width: 70%;
+    width: 300px;
     border-radius: 20%;
     margin: 0 auto;
     margin-top: 50px;
 }
 input.button{
     width: 150px;
-    margin:50px;
     padding: 5px 10px 5px 10px;
+    margin: 50px;
     border-radius: 20%;
     background: #b9bad1;
     font-size: 20px;

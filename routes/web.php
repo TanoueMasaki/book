@@ -58,4 +58,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/db/create_review',[MainController::class, 'createReview']);
+Route::post('/db/confirm_review',[MainController::class, 'confirmReview']);
+Route::post('/db/submit_review',[MainController::class, 'submitReview']);
+Route::post('/db/edit_review',[MainController::class, 'editReview']);
+Route::post('/db/update_review',[MainController::class, 'updateReview']);
+
 require __DIR__.'/auth.php';

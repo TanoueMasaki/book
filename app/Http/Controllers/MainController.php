@@ -217,8 +217,88 @@ class MainController extends Controller
         }
         return redirect()->route('books');
     }
+// ここから森倉さん
+    public function createReview(Request $request)
+    {
+        $books = Book::all()->where('isbn', $request->isbn);;
+        $isbn = $request->isbn;
+        $data = [
+            'books' => $books,
+            'isbn' => $isbn,
+            'rating' => $request->rating,
+            'comment' => $request->comment,
+        ];
+        $exists = Review::where('user_id', $request->user()->id)
+            ->where('isbn_id', $isbn)
+            ->exists();
+        $exist = Review::all()->where('user_id', $request->user()->id)
+            ->where('isbn_id', $isbn);
+        if ($exists) {
+            return view('db/edit_review', $data)
+                ->with([
+                    "exist" => $exist
+                ]);
+        } else {
+            return view('db/create_review', $data);
+        }
+    }
 
+    public function confirmReview(Request $request)
+    {
+        $books = Book::all()->where('isbn', $request->isbn);
+        $isbn = $request->isbn;
+        $data = [
+            'books' => $books,
+            'isbn' => $isbn,
+            'rating' => $request->rating,
+            'comment' => $request->comment
+        ];
+        return view('db/confirm_review', $data);
+    }
 
+    public function submitReview(Request $request)
+    {
+        $user = Auth::user();
+        $review = new Review();
+
+        $review->rating = $request->rating;
+        $review->comment = $request->comment;
+        $review->isbn_id = $request->isbn;
+        $review->user_id = $user->id;
+
+        $review->save();
+
+        $data = [
+            'rating' => $request->rating,
+            'comment' => $request->comment,
+        ];
+        return view('db/submit_review', $data);
+    }
+
+    public function editReview(Request $request)
+    {
+        $id = $request->id;
+        $data = [
+            'record' => Review::find($id)
+        ];
+        return view('db/edit_review', $data);
+    }
+
+    public function updateReview(Request $request)
+    {
+        $review = Review::find($request->id);
+
+        $review->rating = $request->rating;
+        $review->comment = $request->comment;
+
+        $review->save();
+
+        $data = [
+            'rating' => $request->rating,
+            'comment' => $request->comment,
+        ];
+        return view('db/update_review', $data);
+    }
 
 
 }

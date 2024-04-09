@@ -11,7 +11,7 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 crossorigin="anonymous">
 
 <style>
-    textarea {
+    html {
         resize: none;
         width:100%;
         height:100%;
@@ -41,11 +41,19 @@ crossorigin="anonymous">
         margin: 0;
     }
     .link p{
-        padding: 0 0 100px 0;
+        padding: 10px;
+        margin: 0 0 100px 0;
         font-size:20px;
         font-weight:bold;
         color:rgb(0,0,0);
+        border-radius: 20%;
     }
+    .link p:hover{
+    color:rgba(255, 255, 255,1);
+    background: rgba(0, 0, 0,0.7);
+    transition: .2s;
+    
+}
     .errors{
         color:red;
         font-weight:bold;

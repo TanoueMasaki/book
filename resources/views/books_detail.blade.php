@@ -60,8 +60,17 @@
                 </table>
 
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                    @foreach($books as $book)
+                    <form action="/book/public/db/create_review" method="post">
+                        @csrf
+                        <input class="input" type="hidden" name="isbn" value=<?= $book->isbn ?>>
+                        <input type="submit" value="レビューの投稿" class="btn btn-primary">
+                    </form>
+                    @endforeach
+                </div>
+                <div class="p-6 text-gray-900 dark:text-gray-100">
                     <a href="/list">一覧表示へ戻る</a><br>
-                    <a href="/db/create">レビュー登録</a>
+                    <a href="/book/db/create">レビュー登録</a>
                 </div>
             </div>
         </div>

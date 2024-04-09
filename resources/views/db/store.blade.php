@@ -6,13 +6,16 @@
     </x-slot>
 
 <style>
+    html,body{
+        height: 100%;
+    }
     div.back{
         background-image: url(/book/public/img/book3.JPG);
         background-color:rgba(255,255,255,0.4);
         background-size:  100% auto;
         background-repeat: no-repeat;
         padding-top: 50px;
-        height: 1000px;
+        height: 100%;
         text-align: center;
     }
     table,th,td{
@@ -44,16 +47,19 @@
     }
     .frex input.button{
         padding: 5px 20px 5px 20px;
-        margin: 100px 20px 0 20px;
+        margin: 50px 20px 50px 20px;
         font-size:24px;
         font-weight:bold;
-        color:rgba(255, 255, 255,1);
-
         width: fit-content;
         border-radius: 10%;
-        
-        background: rgba(0, 0, 0,0.5);
+        color:rgba(255, 255, 255,1);
+        background: rgba(0, 0, 0,0.7);
     }
+    .frex input.button:hover{
+    color:rgba(0, 0, 0,1);
+    background: rgba(255, 255, 255,0.7);
+    transition: .2s;
+}
 
 </style>
 

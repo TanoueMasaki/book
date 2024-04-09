@@ -1,16 +1,15 @@
+<link rel="stylesheet" href="{{ asset('/css/style_books.css') }}">
 <x-app-layout>
-    <link rel="stylesheet" href="{{ asset('/css/style_books.css') }}">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('book_list') }}
         </h2>
     </x-slot>
-
+    
     @if(session('errorMessage')===null)
     @else
     <p id="errorMessage">{{session('errorMessage')}}</p>
     @endif
-    
         <div class="scroll_table">
             @if(Auth::user()-> dep_id===1)
             @elseif(Auth::user()-> dep_id===2)   
@@ -69,4 +68,5 @@
                 @endforeach
         </table>
         </div>
-</x-app-layout>
+        
+    </x-app-layout>
