@@ -11,8 +11,16 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 crossorigin="anonymous">
 
 <style>
+    textarea {
+        resize: none;
+        width:100%;
+        height:100%;
+    }
+    body{
+        height: 100%;
+    }
     .input{ 
-        width:15em;
+        width:300px;
         margin-bottom: 20px; 
     }
     div.back{
@@ -20,9 +28,12 @@ crossorigin="anonymous">
         background-color:rgba(255,255,255,0.4);
         background-blend-mode:lighten;
         background-size: cover;
+        padding-left:300px ;
+        padding-top:50px ;
+        height: 100%;
     }
     form{
-        margin: 0 0 50px 200px;
+        margin: 0 0 50px 0;
     }
     p{
         font-size:20px;
@@ -30,11 +41,17 @@ crossorigin="anonymous">
         margin: 0;
     }
     .link p{
-        margin: 0 0 0 200px;
         padding: 0 0 100px 0;
         font-size:20px;
         font-weight:bold;
         color:rgb(0,0,0);
+    }
+    .errors{
+        color:red;
+        font-weight:bold;
+    }
+    li.errors{
+        list-style:none;
     }
 </style>
 
@@ -42,16 +59,12 @@ crossorigin="anonymous">
 
 <body>
     <div class="back">
-        <br><br>
+        
         <!-- バリデーションチェックエラーがあれば表示 -->
         @if($errors->any())
         <div  class="errors">
-            <p>※不正な入力があります※</p>
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
+            <p>入力に誤りがあります</p>
+            <p>各項目を確認して下さい</p>
         </div>
         @endif
 
@@ -59,16 +72,31 @@ crossorigin="anonymous">
             @csrf
             <input class="input" type="text" name="con_id" value="{{Auth::user()->id}}" hidden>
             <p>書籍名</p>
+            @if ($errors->has('title'))
+                <li class="errors">{{$errors->first('title')}}</li>
+            @endif
             <input class="input" type="text" name="title" id="title" value="{{old('title')}}">
-            <p>作者</p>
+            <p>著者</p>
+            @if ($errors->has('author'))
+                <li class="errors">{{$errors->first('author')}}</li>
+            @endif
             <input class="input" type="text" name="author" id="author" value="{{old('author')}}">
             <p>出版社</p>
+            @if ($errors->has('publisher'))
+                <li class="errors">{{$errors->first('publisher')}}</li>
+            @endif
             <input class="input" type="text" name="publisher" id="publisher" value="{{old('publisher')}}">
-            <p>刊行日</p>
+            <p>出版日</p>
+            @if ($errors->has('publication_Date'))
+                <li class="errors">{{$errors->first('publication_Date')}}</li>
+            @endif
             <input class="input" type="date" name="publication_Date" id="publication_Date" value="{{old('publication_Date')}}">
             <p>ジャンル</p>
-            <select class="input" name="genre">
-                <option hidden >選択して下さい</option>
+            @if ($errors->has('genre'))
+                <li class="errors">{{$errors->first('genre')}}</li>
+            @endif
+            <select class="input" name="genre" required>
+                <option value="" hidden>選択して下さい</option>
                 <option value="文芸書" @if("文芸書" === old('genre'))  selected @endif>文芸書</option>
                 <option value="実用書" @if("実用書" === old('genre'))  selected @endif>実用書</option>
                 <option value="専門書" @if("専門書" === old('genre'))  selected @endif>専門書</option>
@@ -78,15 +106,21 @@ crossorigin="anonymous">
                 <option value="その他" @if("その他" === old('genre'))  selected @endif>その他</option>
             </select>
             <p>ISBN(書籍番号)</p>
+            @if ($errors->has('isbn'))
+                <li class="errors">{{$errors->first('isbn')}}</li>
+            @endif
             <!-- pattern="^[0-9]+$" -->
             <input class="input" type="text" name="isbn" id="isbn" max="20" pattern="^[0-9]+$" value="{{old('isbn')}}">
-            <p>金額</p>
-            <input class="input" type="number" min="0" name="price" id="price" value="{{old('price',0)}}" maxlength="11" class="input">
-            <input class="btn btn-primary" type="submit" value="登録">
+            <p>価格</p>
+            @if ($errors->has('price'))
+                <li class="errors">{{$errors->first('price')}}</li>
+            @endif
+            <input class="input" type="number" min="0" name="price" id="price" value="{{old('price',0)}}" maxlength="11" class="input"><br>
+            <input class="btn btn-primary" type="submit" value="登録する">
         </form>
         <div class="link">
             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                <p>{{ __('top_page') }}</p>
+                <p>{{ __('top_page') }}に戻る</p>
             </x-nav-link>
         </div>
     </div>

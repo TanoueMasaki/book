@@ -254,6 +254,13 @@ return [
         'updated_at' => '更新日',
         'username' => 'ユーザー名',
         'year' => '年',
+        "title" => 'タイトル',
+        "author" => '著者',
+        "publisher" => '出版社',
+        "publication_Date" => '出版日',
+        "genre" => 'ジャンル',
+        "isbn" => 'ISBN(書籍番号)',
+        "price" => '価格',
     ],
 
 ];

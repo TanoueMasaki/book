@@ -12,6 +12,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 以下のレコードが削除されます。本当に削除しますか？
+                ※この書籍のレビューも全て削除されます
                 </div>
             </div>
         </div>

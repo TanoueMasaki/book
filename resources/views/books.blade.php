@@ -12,6 +12,9 @@
     @endif
     
         <div class="scroll_table">
+            @if(Auth::user()-> dep_id===1)
+            @elseif(Auth::user()-> dep_id===2)   
+            
             <table class="check_table">
                 <tr>
                     <th class="short"></th>
@@ -21,11 +24,12 @@
                     @foreach($books as $book)
                     <tr><td class="short"><input type="checkbox" name="checkedId[]" value=<?=$book->id?> ></td></tr>
                     @endforeach
-                </table>
-                <input class="checkButtonDe" type="submit" name="bookDataDelete" value="削除">
-                <input class="checkButtonUp" type="submit" name="bookDataUpdate" value="編集">
-                <input class="checkButtonRe" type="reset" value="リセット">
+            </table>
+                <input class="checkButton" id="checkButtonDe" type="submit" name="bookDataDelete" value="削除">
+                <input class="checkButton" id="checkButtonUp" type="submit" name="bookDataUpdate" value="編集">
+                <input class="checkButton" id="checkButtonRe" type="reset" value="リセット">
             </form>
+            @endif
             <table class="main_table">    
                 <tr>
                     <th class="short"></th>

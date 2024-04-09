@@ -9,12 +9,24 @@
 
         
     </head>
-    <body class="antialiased">
-        <div class="login">
-            <p>書籍管理システム</p><hr>
-            <!-- <img src="{{ asset('') }}" alt=""> -->
-            <a href="{{ route('register') }}">新規登録</a>
-            <a href="{{ route('login') }}">ログイン</a>
-        </div>
+    <body class="antialiased" background="{{ asset('/img/book.JPG') }}">
+        <main>
+            <div class="login">
+                <p>書籍管理システム</p><hr>
+                <!-- <img src="{{ asset('') }}" alt=""> -->
+                @if (Route::has('login'))
+                    <div class='loginMain'>
+                        @auth
+                            <a href="{{ url('/dashboard') }}" >{{ Auth::user()->name }}さんこんにちは<br>こちらからお入り下さい</a>
+                        @else
+                            <a href="{{ route('login') }}" >ログイン</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" >登録</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+            </div>
+        </main>
     </body>
 </html>

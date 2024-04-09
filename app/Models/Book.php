@@ -15,6 +15,10 @@ class Book extends Model
 
     use HasFactory;
 
+    public function scopeContributorId($query,$id){
+        return $query->where('contributor_id',$id)->orderBy('post_date', 'desc')->orderBy('post_time', 'desc');
+    }
+
     public function review(){
         return $this->hasMany(Review::class,'isbn');
     }

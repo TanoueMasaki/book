@@ -5,26 +5,62 @@
         </h2>
     </x-slot>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-rel="stylesheet" 
-integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
-crossorigin="anonymous">
-
 <style>
     div.back{
         background-image: url(/book/public/img/book3.JPG);
         background-color:rgba(255,255,255,0.4);
-        background-blend-mode:lighten;
-        background-size: cover;
-        background-size: auto auto;
+        background-size:  100% auto;
         background-repeat: no-repeat;
+        padding-top: 50px;
+        height: 1000px;
+        text-align: center;
     }
+    table,th,td{
+        margin: 0 auto;
+        border-radius: 5%;
+        border: 1px solid rgb(82, 81, 81);
+        background-color:rgba(255,255,255,1);
+        border-collapse: collapse;
+    }
+    table{
+        padding-top:50px;
+    }
+    th,td{
+        padding: 5px 20px 5px 20px;
+    }
+    th{
+        font-size:24px;
+        font-weight:bold;
+        width: fit-content;
+    }
+    td{
+        width: 500px;
+        font-size:20px;
+    }
+    .frex{
+        width: fit-content;
+        display: flex;
+        margin: 0 auto;
+    }
+    .frex input.button{
+        padding: 5px 20px 5px 20px;
+        margin: 100px 20px 0 20px;
+        font-size:24px;
+        font-weight:bold;
+        color:rgba(255, 255, 255,1);
+
+        width: fit-content;
+        border-radius: 10%;
+        
+        background: rgba(0, 0, 0,0.5);
+    }
+
 </style>
 
 <body>
     <div class="back">
        
-        <table class="table table-striped table-bordered">
+        <table >
             <tr><th>書籍名</th><td>{{ $title }}</td></tr>
             <tr><th>作者</th><td>{{ $author }}</td></tr>
             <tr><th>出版社</th><td>{{ $publisher }}</td></tr>
@@ -32,26 +68,22 @@ crossorigin="anonymous">
             <tr><th>ジャンル</th><td>{{ $genre }}</td></tr>
             <tr><th>ISBN(書籍番号)</th><td>{{ $isbn }}</td></tr>
             <tr><th>金額</th><td>{{ $price }}</td></tr>
-
         </table>
-        <br>
-        <form action="/book/public/dashboard" method="post">
-            @csrf
-            <input class="button" type="submit" name="dashboard" value="Topに戻る">
-        </form>
-        <!-- dep_idがD002だけ書籍登録画面へのリンクを表示する -->
-        @if(Auth::user()-> dep_id===1)
-        @elseif(Auth::user()-> dep_id===2)
-        <form action="/book/public/db/create" method="post">
-            @csrf
-            <input class="button" type="submit" name="books_registration" value="続けて登録する">
-        </form>   
-        @endif
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
-            crossorigin="anonymous">
-        </script>
+        
+        <div class="frex">
+            <form action="/book/public/dashboard" method="post">
+                @csrf
+                <input class="button" type="submit" name="dashboard" value="Topに戻る">
+            </form>
+            <!-- dep_idがD002だけ書籍登録画面へのリンクを表示する -->
+            @if(Auth::user()-> dep_id===1)
+            @elseif(Auth::user()-> dep_id===2)
+            <form action="/book/public/db/create" method="post">
+                @csrf
+                <input class="button" type="submit" name="books_registration" value="続けて登録する">
+            </form>   
+            @endif
+        </div>
     </div>
 </body>
 

@@ -2,7 +2,7 @@
 div.scroll_table{
     margin: 0 auto;
     width: 95%;
-    max-height: 500px;
+    max-height: 800px;
     overflow:auto;
     display: flex;
 }
@@ -22,46 +22,80 @@ form{
     font-size: 24px;
     width: fit-content;
     margin: 0 auto;
+    
 }
 /* チェックテーブル */
 table.check_table{
-   margin-right: 3px;
+   margin-right: 8px;
 }
 table.check_table th{
-    height: 20px;
+    position: sticky;
+    background: rgb(243,244,246);
+    top: 0;
+    left: 0;
+    height: 30px;
  }
-input.checkButtonDe{
-    width: 100px;
+ table.check_table td{
+    vertical-align: middle;
+    text-align: center;
+ }
+ tr{
+    height: 50px;
+ }
+
+input#checkButtonDe{
+    width: 200px;
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
     left: 0;
     right: 20%;
     margin: 0 auto;
     border-radius: 5%;
-    background: rgb(170, 170, 248);
+    background: rgb(213, 213, 253);
     font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
 }
-input.checkButtonUp{
-    width: 100px;
+input#checkButtonUp{
+    width: 200px;
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
     left: 0;
     right: 0;
     margin: 0 auto;
     border-radius: 5%;
-    background: rgb(170, 170, 248);
+    background: rgb(213, 213, 253);
     font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
 }
-input.checkButtonRe{
-    width: 100px;
+input#checkButtonRe{
+    width: 200px;
     position: absolute;
-    bottom: 50px;
+    bottom: 20px;
     left: 20%;
     right: 0;
     margin: 0 auto;
     border-radius: 5%;
-    background: rgb(170, 170, 248);
+    background: rgb(213, 213, 253);
     font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+input#checkButtonDe:hover{
+    background: #777586;
+    color: #cbcbcb;
+    transition: .2s;
+}
+input#checkButtonUp:hover{
+    background: #777586;
+    color: #cbcbcb;
+    transition: .2s;
+}
+input#checkButtonRe:hover{
+    background: #777586;
+    color: #cbcbcb;
+    transition: .2s;
 }
 /* メインテーブル */
 table.main_table{
@@ -69,7 +103,10 @@ table.main_table{
     background: #ffffff;
 }
 table.main_table th,table.main_table td{
-    overflow-wrap: break-word;
+    /* overflow-wrap: break-word; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     padding-top: 5px;
     width: 6%;
     min-width: 60px;
@@ -82,16 +119,8 @@ table.main_table th,table.main_table td{
     border-collapse: collapse;
     font-size: 12px;
 }
-table.main_table img{
-    margin: 0 auto;
-    width: 50px;
-    height:50px;
-}
 table.main_table td{
     border-bottom: 1px solid rgb(82, 81, 81);
-}
-
-table.main_table td{
     border-top: 1px solid rgb(82, 81, 81);
 }
 table.main_table th{
@@ -99,7 +128,7 @@ table.main_table th{
     background: #e2e0f8;
     top: 0;
     left: 0;
-    height: 20px;
+    height: 30px;
 }
 table.main_table th.long,table.main_table td.long{
     width: 12%;
@@ -136,7 +165,7 @@ input.button{
 input.button:hover{
     background-color: #838ac6;
     color: #cbcbcb;
-    transition: .3s;
+    transition: .2s;
 }
 
 

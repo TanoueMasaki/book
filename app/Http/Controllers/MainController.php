@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 // Auth::～使う場合いる
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
 
 use App\Models\Department;
 use App\Models\User;
@@ -17,30 +22,17 @@ class MainController extends Controller
     public function books(Request $request){
 
         $books = Book::all();
-        // $relations = User2::all();
+        
         $data = [
             'users' => User::all(),
             `departments` => Department::all(),
             'relations' => User::all()
         ];
 
-        // 分類イメージ画像を配列に入れる
-        $images = [
-            asset('/data/image/no_image.png'),
-            asset('/data/image/comic.png'),
-            asset('/data/image/doujinshi.png'),
-            asset('/data/image/ehon.png'),
-            asset('/data/image/fashion.png'),
-            asset('/data/image/meigensyu.png'),
-            asset('/data/image/music.png')
-        ];
-        $imageNum = 0;
-
         return view('books', $data)
             ->with([
-                "books" => $books,
-                "images" => $images,
-                "imageNum" => $imageNum
+                "books" => $books
+                
             ]);   
 
         
@@ -76,7 +68,7 @@ class MainController extends Controller
     }
     
     public function created(Request $request){
-        return redirect()->route('db.create');
+        return redirect()->route('create');
     }
 
     public function stored(Request $request){
@@ -87,7 +79,7 @@ class MainController extends Controller
         "author" => 'required | string',
         "publisher" => 'required | string',
         "publication_Date" => 'required',
-        "genre" => 'required | string',
+        "genre" => 'required | in:"文芸書","実用書","専門書", "雑誌","漫画","絵本","その他"',
         "isbn" => 'required | integer | digits_between:10,13 | unique:books,isbn',
         "price" => 'integer | min:0'
     ]);
@@ -136,23 +128,9 @@ class MainController extends Controller
             // 複数条件での検索はwhereInで出来る
             $books = Book::all()->whereIn('id', $checkedId);
 
-            // 分類イメージ画像を配列に入れる
-            $images = [
-                asset('/data/image/no_image.png'),
-                asset('/data/image/comic.png'),
-                asset('/data/image/doujinshi.png'),
-                asset('/data/image/ehon.png'),
-                asset('/data/image/fashion.png'),
-                asset('/data/image/meigensyu.png'),
-                asset('/data/image/music.png')
-            ];
-            $imageNum = 0;
-
             return view('db.delete')
             ->with([
-                "books" => $books,
-                "images" => $images,
-                "imageNum" => $imageNum
+                "books" => $books
             ]);
 
         // 更新ボタンが押されたら
