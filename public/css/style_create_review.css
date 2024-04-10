@@ -52,6 +52,17 @@ div.main{
     background-color:rgba(0, 0, 0, 0.589);
     border-radius: 50px;
 }
+div.main h1{
+    background-color:rgb(248, 170, 170);
+    border-radius: 50px;
+    color: #483232;
+    text-align: center;
+    padding: 5px 10px 5px 10px;
+    margin: 20px 10px 20px 10px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
 /* ボタン */
 input.button{
     font-size: 20px;
@@ -73,6 +84,7 @@ form{
 div.link{
    width: fit-content;
    margin: 0 auto;
+   
 }
 .link p{
     font-size: 20px;
@@ -81,6 +93,7 @@ div.link{
     border-radius: 10px;
     background: #e2e2e7;
     color: #555555;
+    text-align: center;
 }
 .link p:hover{
     background: rgb(102, 102, 110);

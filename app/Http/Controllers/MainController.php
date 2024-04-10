@@ -223,6 +223,7 @@ class MainController extends Controller
     {
         $books = Book::all()->where('isbn', $request->isbn);;
         $isbn = $request->isbn;
+
         $data = [
             'books' => $books,
             'isbn' => $isbn,
@@ -287,19 +288,34 @@ class MainController extends Controller
 
     public function updateReview(Request $request)
     {
-        $review = Review::find($request->id);
+        // 更新ボタンが押されたら
+        if ($request->has('update')) {
+            $review = Review::find($request->id);
 
-        $review->rating = $request->rating;
-        $review->comment = $request->comment;
+            $review->rating = $request->rating;
+            $review->comment = $request->comment;
 
-        $review->save();
+            $review->save();
 
-        $data = [
-            'rating' => $request->rating,
-            'comment' => $request->comment,
-        ];
-        return view('db/update_review', $data);
+            $data = [
+                'rating' => $request->rating,
+                'comment' => $request->comment,
+                'message' => 'レビューを更新しました',
+            ];
+            return view('db/update_review', $data);
+
+        // 削除ボタンがおされたら
+        } elseif ($request->has('delete')) {
+            $review = Review::where('user_id', $request->user()->id)
+            ->where('isbn_id', $request->isbn)->delete();
+
+            $data = [
+                'rating' => $request->rating,
+                'comment' => $request->comment,
+                'message' => 'レビューを削除しました',
+            ];
+
+            return view('db/update_review', $data);
+        }
     }
-
-
 }

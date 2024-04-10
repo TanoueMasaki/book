@@ -17,7 +17,7 @@
                 <textarea name="comment" id="comment" rows="4" cols="50" required></textarea><br><br>
             </div>
             <div class="button">
-                <input class="input" name="isbn" value="{{ $isbn }}">
+                <input class="input" hidden name="isbn" value="{{ $isbn }}">
                 <input class="button" type="submit" name="confirm" value="投稿の確認" >
             </div>
         </form>

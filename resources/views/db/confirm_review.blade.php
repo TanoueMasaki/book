@@ -29,52 +29,58 @@ div.main{
     border-radius: 50px;
 }
 table{
-    margin: 50px;
+    margin: 50px 0 50px;
     width: 100%;
     background: #ffffff;
 }
 table th.long{
-    width: 60%;
+    width: 80%;
     text-align: center;
     vertical-align: middle;
     border-top: 1px solid rgb(82, 81, 81);
     border-right: 1px solid rgb(82, 81, 81);
     border-left: 1px solid rgb(82, 81, 81);
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 20px;
+    background-color: #bebec3;
 }
 table th.short{
-    width: 40%;
+    width: 20%;
     text-align: center;
     vertical-align: middle;
     border-top: 1px solid rgb(82, 81, 81);
     border-right: 1px solid rgb(82, 81, 81);
     border-left: 1px solid rgb(82, 81, 81);
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 30px;
+    background-color: #bebec3;
 }
 table td.long{
-    width: 60%;
+    width: 80%;
     text-align: center;
     vertical-align: middle;
     border-top: 1px solid rgb(82, 81, 81);
     border-right: 1px solid rgb(82, 81, 81);
     border-left: 1px solid rgb(82, 81, 81);
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 28px;
 }
 table td.short{
-    width: 40%;
+    width: 20%;
     text-align: center;
     vertical-align: middle;
     border-top: 1px solid rgb(82, 81, 81);
     border-right: 1px solid rgb(82, 81, 81);
     border-left: 1px solid rgb(82, 81, 81);
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 18px;
+}
+form{
+    width: fit-content;
+    margin: 0 auto;
 }
 /* ボタン */
-input.button{
+.button{
     font-size: 20px;
     width: 200px;
     margin: 5px 10px 5px 10px;
@@ -83,7 +89,7 @@ input.button{
     background: #e2e2e7;
     color: #555555;
 }
-input.button:hover{
+.button:hover{
     background: rgb(102, 102, 110);
     color: rgb(255, 255, 255);
     transition: .2s;
@@ -118,7 +124,7 @@ h1#title{
             @csrf
             <input type="hidden" name="rating" value="{{ $rating }}">
             <input type="hidden" name="comment" value="{{ $comment }}">
-            <button type="button" onclick="history.back()">戻る</button>
+            <button class="button" type="button" onclick="history.back()">戻る</button>
             <input class="input" hidden name="isbn" value="{{$isbn}}">
             <input class="button" type="submit" value="この内容で投稿する" >
         </form>

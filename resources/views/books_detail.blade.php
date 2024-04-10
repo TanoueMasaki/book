@@ -45,7 +45,9 @@
         <div class="scroll_table">
             <table class="sub_table">
                 <tr>
+                    @if(Auth::user()-> dep_id===2)
                     <th class="short"></th>
+                    @endif
                     <th>投稿者</th>
                     <th>部署名</th>
                     <th>投稿日</th>
@@ -56,7 +58,9 @@
                 @csrf
                 @foreach($reviews as $book)
                 <tr>
+                    @if(Auth::user()-> dep_id===2)
                     <td class="short"><input type="checkbox" name="checkedId[]" value=<?=$book->id?> ></td>
+                    @endif
                     <td>{{$book->user->name}}</td>
                     <td>{{$book->user->department->dep_name}}</td>
                     <td>{{$book->created_at}}</td>
@@ -67,12 +71,14 @@
             </table>
         </div>
         <div class="frex">
+                    @if(Auth::user()-> dep_id===2)
                     <input class="button" id="checkButtonDe" type="submit" name="bookDataDelete" value="削除">
                     <input class="button" id="checkButtonRe" type="reset" value="リセット">
+                    @endif
                 </form>
             <form action="/book/public/db/create_review" method="post">
                 @csrf
-                <input class="input" name="isbn" value="{{$isbn}}">
+                <input class="input" hidden name="isbn" value="{{$isbn}}">
                 <input class="button" type="submit" value="レビューの投稿（編集）">
             </form>
         </div>
