@@ -51,5 +51,89 @@ class BooksTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        DB::table('books')->insert([
+            'title' => 'あ',
+            'author' => 'TEX加藤',
+            'publisher' => '朝日新聞出版',
+            'publication_Date' => '2012-03-07',
+            'genre' => '言語、言語学',
+            'isbn' => 9784023310651,
+            'price' => 890,
+            'con_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('books')->insert([
+            'title' => 'い',
+            'author' => 'TEX加藤',
+            'publisher' => '朝日新聞出版',
+            'publication_Date' => '2012-03-07',
+            'genre' => '言語、言語学',
+            'isbn' => 9784023310652,
+            'price' => 890,
+            'con_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('books')->insert([
+            'title' => 'う',
+            'author' => 'TEX加藤',
+            'publisher' => '朝日新聞出版',
+            'publication_Date' => '2012-03-07',
+            'genre' => '言語、言語学',
+            'isbn' => 9784023310653,
+            'price' => 890,
+            'con_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('books')->insert([
+            'title' => 'え',
+            'author' => 'TEX加藤',
+            'publisher' => '朝日新聞出版',
+            'publication_Date' => '2012-03-07',
+            'genre' => '言語、言語学',
+            'isbn' => 9784023310654,
+            'price' => 890,
+            'con_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('books')->insert([
+            'title' => 'お',
+            'author' => 'TEX加藤',
+            'publisher' => '朝日新聞出版',
+            'publication_Date' => '2012-03-07',
+            'genre' => '言語、言語学',
+            'isbn' => 9784023310655,
+            'price' => 890,
+            'con_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('books')->insert([
+            'title' => 'か',
+            'author' => 'TEX加藤',
+            'publisher' => '朝日新聞出版',
+            'publication_Date' => '2012-03-07',
+            'genre' => '言語、言語学',
+            'isbn' => 9784023310656,
+            'price' => 890,
+            'con_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('books')->insert([
+            'title' => 'き',
+            'author' => 'TEX加藤',
+            'publisher' => '朝日新聞出版',
+            'publication_Date' => '2012-03-07',
+            'genre' => '言語、言語学',
+            'isbn' => 9784023310657,
+            'price' => 890,
+            'con_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }

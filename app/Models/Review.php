@@ -9,6 +9,10 @@ class Review extends Model
 {
     use HasFactory;
 
+    // public function scopeAvgRating($query,$isbn){
+    //     return $query->select('isbn_id')->selectRaw('AVG(rating) as rating')->groupBy('isbn_id')->having('isbn_id',$isbn);
+    // }
+
     public function book(){
         return $this->belongsTo(Book::class,'isbn_id');
     }

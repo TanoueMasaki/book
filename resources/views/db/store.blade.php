@@ -1,16 +1,9 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('completion_of_registration') }}
-        </h2>
-    </x-slot>
-
 <style>
     html,body{
         height: 100%;
     }
     div.back{
-        background-image: url(/book/public/img/book3.JPG);
+        background-image: url(/book/public/img/book2.JPG);
         background-color:rgba(255,255,255,0.4);
         background-size:  100% auto;
         background-repeat: no-repeat;
@@ -60,8 +53,19 @@
     background: rgba(255, 255, 255,0.7);
     transition: .2s;
 }
+img{
+    width: 300px;
+    margin: 0 auto;
+}
+
 
 </style>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('completion_of_registration') }}
+        </h2>
+    </x-slot>
 
 <body>
     <div class="back">
@@ -90,6 +94,7 @@
             </form>   
             @endif
         </div>
+        <img class="top" src="{{ asset('/data/image/ghost.png') }}" alt="topImg">
     </div>
 </body>
 

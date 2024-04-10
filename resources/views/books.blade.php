@@ -33,6 +33,8 @@
             @endif
             <table class="main_table">  
                 <tr>
+                <th></th>
+                    <th></th>
                     <th class="short"></th>
                     <th class="long">タイトル</th>
                     <th>著者</th>
@@ -48,6 +50,36 @@
                 </tr>
                 @foreach($books as $book)
                 <tr>
+                    <td>
+                    <img id="book" src="https://ndlsearch.ndl.go.jp/thumbnail/{{$book->isbn}}.jpg" alt="NO IMAGE">
+                    
+                    </td>
+                    <td>
+                        <!-- 評価値の判定 -->
+                        @foreach($rating_avg as $avg)
+                            @if($avg->isbn_id === $book->isbn)
+                                {{$avg->ratingAvg}}
+                                @if($avg->ratingAvg > 0 && $avg->ratingAvg < 2)
+                                    <p class="star">★</p>
+                                    @elseif($avg->ratingAvg >= 2 && $avg->ratingAvg < 3)
+                                    <p class="star">★★</p>
+                                    @elseif($avg->ratingAvg >= 3 && $avg->ratingAvg < 4)
+                                    <p class="star">★★★</p>
+                                    @elseif($avg->ratingAvg >= 4 && $avg->ratingAvg < 5)
+                                    <p class="star">★★★★</p>
+                                    @elseif($avg->ratingAvg >= 5)
+                                    <p class="star">★★★★★</p>
+                                    @endif
+                                    <?php $val = 1;?>
+                                    @break
+                                @else
+                                <?php $val = 0;?>
+                            @endif
+                        @endforeach
+                        @if($val === 0)
+                        <p>評価なし</p>
+                        @endif
+                    </td>
                     <td class="short">{{$book->id}}</td>
                     <td class="long">{{$book->title}}</td>
                     <td>{{$book->author}}</td>
@@ -55,8 +87,9 @@
                     <td>{{$book->publication_Data}}</td>
                     <td>{{$book->genre}}</td>
                     <td>{{$book->isbn}}</td>
+                    
                     <td class="short">{{$book->price}}円</td>
-                    <td class="short">{{$book->user->name}}</td>
+                    <td class="short">{{$book->username}}</td>
                     <td>{{$book->created_at}}</td>
                     <td>{{$book->updated_at}}</td>
                     <td class="short">

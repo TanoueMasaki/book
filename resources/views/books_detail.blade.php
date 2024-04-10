@@ -9,7 +9,8 @@
         <h1>選択中の書籍情報</h1>
         <table class="main_table"> 
             <tr>
-                <th class="short"></th>
+                <th>評価値</th>
+                <th class="short">ID</th>
                 <th class="long">タイトル</th>
                 <th>著者</th>
                 <th class="long">出版社</th>
@@ -24,6 +25,32 @@
 
             @foreach($books as $book)
             <tr>
+                <td>
+                <!-- 評価値の判定 -->
+                @foreach($rating_avg as $avg)
+                        @if($avg->isbn_id === $book->isbn)
+                            {{$avg->ratingAvg}}
+                            @if($avg->ratingAvg > 0 && $avg->ratingAvg < 2)
+                                <p class="star">★</p>
+                                @elseif($avg->ratingAvg >= 2 && $avg->ratingAvg < 3)
+                                <p class="star">★★</p>
+                                @elseif($avg->ratingAvg >= 3 && $avg->ratingAvg < 4)
+                                <p class="star">★★★</p>
+                                @elseif($avg->ratingAvg >= 4 && $avg->ratingAvg < 5)
+                                <p class="star">★★★★</p>
+                                @elseif($avg->ratingAvg >= 5)
+                                <p class="star">★★★★★</p>
+                                @endif
+                                <?php $val = 1;?>
+                                @break
+                            @else
+                            <?php $val = 0;?>
+                        @endif
+                    @endforeach
+                    @if($val === 0)
+                    <p>評価なし</p>
+                    @endif
+                </td>
                 <td class="short">{{$book->id}}</td>
                 <td class="long">{{$book->title}}</td>
                 <td>{{$book->author}}</td>
@@ -48,19 +75,21 @@
                     @if(Auth::user()-> dep_id===2)
                     <th class="short"></th>
                     @endif
+                    
                     <th>投稿者</th>
                     <th>部署名</th>
                     <th>投稿日</th>
                     <th class="short">おすすめ度</th>
                     <th class="long">コメント</th>
                 </tr>
-                <form action="/book/public/db/deleteOrUpdate" method="post">
+                <form action="/book/public/db/deleteReview" method="post">
                 @csrf
                 @foreach($reviews as $book)
                 <tr>
                     @if(Auth::user()-> dep_id===2)
                     <td class="short"><input type="checkbox" name="checkedId[]" value=<?=$book->id?> ></td>
                     @endif
+                    
                     <td>{{$book->user->name}}</td>
                     <td>{{$book->user->department->dep_name}}</td>
                     <td>{{$book->created_at}}</td>

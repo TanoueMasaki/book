@@ -16,9 +16,41 @@ class ReviewsTableSeeder extends Seeder
         //
         DB::table('reviews')->insert([
             'comment' => 'SQLについてよくわかった',
-            'rating' => '4',
+            'rating' => '3',
             'isbn_id' => '9784800712349',
             'user_id' => '1',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('reviews')->insert([
+            'comment' => 'SQLについてよくわかった',
+            'rating' => '2',
+            'isbn_id' => '9784800712349',
+            'user_id' => '2',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('reviews')->insert([
+            'comment' => 'SQLについてよくわかった',
+            'rating' => '3',
+            'isbn_id' => '9784800712349',
+            'user_id' => '3',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('reviews')->insert([
+            'comment' => 'SQLについてよくわかった',
+            'rating' => '4',
+            'isbn_id' => '9784800712349',
+            'user_id' => '4',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        DB::table('reviews')->insert([
+            'comment' => 'SQLについてよくわかった',
+            'rating' => '5',
+            'isbn_id' => '9784800712349',
+            'user_id' => '5',
             'created_at' => now(),
             'updated_at' => now()
         ]);

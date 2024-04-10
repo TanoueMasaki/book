@@ -52,6 +52,14 @@ Route::post('/db/update',[MainController::class, 'update'])
 Route::post('/db/updateEnd',[MainController::class, 'updateEnd'])
 ->middleware(['auth', 'verified'])->name('updateEnd');
 
+
+Route::post('/db/deleteReview',[MainController::class, 'deleteReview'])
+->middleware(['auth', 'verified'])->name('deleteReview');
+Route::post('/db/removeReview',[MainController::class, 'removeReview'])
+->middleware(['auth', 'verified'])->name('removeReview');
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

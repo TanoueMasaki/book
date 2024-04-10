@@ -9,14 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <p class="top">{{ Auth::user()-> name}}さんで{{ __("You're logged in!") }}</p>
+                    <p class="top">{{ Auth::user()-> name}}さんが{{ __("You're logged in!") }}</p>
                 </div>
             </div>
         </div>
 
-        <main>
-            <img class="top" src="{{ asset('/data/image/hondana.png') }}" alt="topImg">
-            <div class="frex">
+        
+        <div class="frex">
+            <img class="top" src="{{ asset('/data/image/ghost.png') }}" alt="topImg">
                 <form action="/book/public/books" method="get">
                     @csrf
                     <input class="button" type="submit" name="books" value="書籍一覧">
@@ -30,6 +30,6 @@
                 </form>   
                 @endif
             </div>
-        </main>
+        
     </div>
 </x-app-layout>

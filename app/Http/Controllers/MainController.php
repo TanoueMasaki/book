@@ -19,38 +19,52 @@ use App\Models\Review;
 
 class MainController extends Controller
 {
+    // 書籍一覧表示が押されたら
     public function books(Request $request){
 
         $books = Book::all();
-        
+
+        // 評価値の平均値抽出
+        $rating_avg = Review::select('isbn_id')
+                    ->selectRaw('round(AVG(rating),1) as ratingAvg')
+                    ->groupBy('isbn_id')
+                    ->get();
+
         $data = [
             'users' => User::all(),
             `departments` => Department::all(),
-            'relations' => User::all()
+            'relations' => User::all(),
+            'rating_avg' => $rating_avg
         ];
 
         return view('books', $data)
             ->with([
                 "books" => $books
-                
             ]);   
-
-        
     }
 
-    // 書籍一覧表示が押されたら
     public function booked(Request $request){
         return redirect()->route('books');
     }
 
     public function booksDetail(Request $request)
     {
+        // 評価値の平均値抽出
+        $rating_avg = Review::select('isbn_id')
+                    ->selectRaw('round(AVG(rating),1) as ratingAvg')
+                    ->groupBy('isbn_id')
+                    ->get();
+        
+                    
+
         $data = [
             'users' => User::all(),
             `departments` => Department::all(),
             'reviews' => Review::all()->where('isbn_id', $request->isbn),
-            'isbn' => $request->isbn
+            'isbn' => $request->isbn,
+            'rating_avg' => $rating_avg
         ];
+
 
         $books = Book::all()->where('isbn', $request->isbn);
         return view('books_detail',$data)
@@ -317,5 +331,57 @@ class MainController extends Controller
 
             return view('db/update_review', $data);
         }
+    }
+    // レビューデータの削除
+    public function deleteReview(Request $request){
+        $checkedId = $request->checkedId;
+        // セッションに$checkedIdを一旦保存しておく
+        $request->session()->put('checkedId',$checkedId);
+
+        // 複数条件での検索はwhereInで出来る
+        $review = Review::all()->whereIn('id', $checkedId);
+
+        return view('db.delete_review')
+        ->with([
+            "review" => $review
+        ]);
+        
+    }
+
+    // データの削除実行(REMOVE)
+    public function removeReview(Request $request){
+       
+        if($request->session()->has('checkedId')){
+        
+
+            $checkedId = $request->session()->get('checkedId');
+
+            // 先にReviewから削除（リレーションシップがあるため）
+            $review = Review::whereIn('id', $checkedId)->delete();
+
+           
+        // セッションの'checkedId'と'isbn'を消去する
+        $request->session()->forget('checkedId');
+            
+        $books = Book::all();
+
+        // 評価値の平均値抽出
+        $rating_avg = Review::select('isbn_id')
+                    ->selectRaw('round(AVG(rating),1) as ratingAvg')
+                    ->groupBy('isbn_id')
+                    ->get();
+
+        $data = [
+            'users' => User::all(),
+            `departments` => Department::all(),
+            'relations' => User::all(),
+            'rating_avg' => $rating_avg
+        ];
+
+        return view('books', $data)
+            ->with([
+                "books" => $books
+            ]); 
+    }
     }
 }
