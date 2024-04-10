@@ -52,8 +52,7 @@ crossorigin="anonymous">
     color:rgba(255, 255, 255,1);
     background: rgba(0, 0, 0,0.7);
     transition: .2s;
-    
-}
+    }
     .errors{
         color:red;
         font-weight:bold;

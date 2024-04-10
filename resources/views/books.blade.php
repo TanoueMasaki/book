@@ -24,12 +24,14 @@
                     <tr><td class="short"><input type="checkbox" name="checkedId[]" value=<?=$book->id?> ></td></tr>
                     @endforeach
             </table>
-                <input class="checkButton" id="checkButtonDe" type="submit" name="bookDataDelete" value="削除">
-                <input class="checkButton" id="checkButtonUp" type="submit" name="bookDataUpdate" value="編集">
-                <input class="checkButton" id="checkButtonRe" type="reset" value="リセット">
+                <div class="checkButton">
+                    <input  id="checkButtonDe" type="submit" name="bookDataDelete" value="削除">
+                    <input  id="checkButtonUp" type="submit" name="bookDataUpdate" value="編集">
+                    <input  id="checkButtonRe" type="reset" value="リセット">
+                </div>
             </form>
             @endif
-            <table class="main_table">    
+            <table class="main_table">  
                 <tr>
                     <th class="short"></th>
                     <th class="long">タイトル</th>
@@ -60,7 +62,7 @@
                     <td class="short">
                         <form action="/book/public/books_detail" method="post">
                         @csrf
-                            <input class="input" type="hidden" name="isbn" value=<?=$book->isbn?>>
+                            <input class="input" type="hidden" name="isbn" value="{{$book->isbn}}">
                             <input class="buttonDetail" type="submit" value="詳細">
                         </form>
                     </td>

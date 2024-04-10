@@ -48,7 +48,8 @@ class MainController extends Controller
         $data = [
             'users' => User::all(),
             `departments` => Department::all(),
-            'reviews' => Review::all()->where('isbn_id', $request->isbn)
+            'reviews' => Review::all()->where('isbn_id', $request->isbn),
+            'isbn' => $request->isbn
         ];
 
         $books = Book::all()->where('isbn', $request->isbn);

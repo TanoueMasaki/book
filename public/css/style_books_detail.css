@@ -1,0 +1,196 @@
+/* スクロール用 */
+html{
+    height: 85%;
+}
+body{
+    height: 100%;
+}
+div.min-h-screen bg-gray-100 dark:bg-gray-900{
+    margin: 0;
+    padding: 0;
+}
+main{
+    height: 100%;
+    width: 100%;
+    background-image: url(/book/public/data/image/book1.JPG);
+    background-color:rgba(255,255,255,0.4);
+    background-size:  100% auto;
+    background-repeat: no-repeat;
+}
+/* エラーメッセージ */
+#errorMessage{
+    color: #ff6060;
+    font-weight:bold;
+    font-size: 24px;
+    width: fit-content;
+    margin: 0 auto;
+    
+}
+
+/* メインテーブル */
+div.main{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+div.main h1{
+    width: fit-content;
+    font-size: 25px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    background-color:rgba(255, 255, 255, 0.692);
+    border-radius: 50px;
+    margin-bottom: 5px;
+    padding: 0 10px 0 10px;
+}
+table.main_table{
+    width: 100%;
+    margin: 0 auto;
+    background-color:rgba(255,255,255,1);
+}
+table.main_table th,table.main_table td{
+    /* overflow-wrap: break-word; */
+    /* text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; */
+    
+    width: 6%;
+    min-width: 60px;
+    max-width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    border-top: 1px solid rgb(82, 81, 81);
+    border-right: 1px solid rgb(82, 81, 81);
+    border-left: 1px solid rgb(82, 81, 81);
+    border-collapse: collapse;
+    font-size: 12px;
+}
+table.main_table td{
+    border-bottom: 1px solid rgb(82, 81, 81);
+    border-top: 1px solid rgb(82, 81, 81);
+    height: 60px;
+}
+table.main_table th{
+    /* position: sticky; */
+    background: #dcdbe7;
+    /* top: 0;
+    left: 0; */
+    height: 50px;
+}
+table.main_table th.long,table.main_table td.long{
+    width: 12%;
+    min-width: 120px;
+    max-width: 150px;
+}
+table.main_table th.short,table.main_table td.short{
+    width: 4%;
+    min-width: 30px;
+    max-width: 50px;
+}
+/* サブテーブル */
+div.sub{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+div.sub h1{
+    width: fit-content;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    background-color:rgba(255, 255, 255, 0.692);
+    border-radius: 50px;
+    margin-bottom: 5px;
+    padding: 0 10px 0 10px;
+}
+div.sub h2{
+    width: fit-content;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgb(255, 224, 224);
+    background-color:rgba(0, 0, 0, 0.76);
+    margin-left: 30px;
+    margin-bottom: 5px;
+    padding: 3px 10px 3px 10px;
+    border-radius: 50px;
+}
+div.scroll_table{
+    height: 55%;
+    overflow:auto;
+    width: 100%;
+    margin: 0 auto;
+}
+table.sub_table{
+    width: 100%;
+    margin: 0 auto;
+    background-color:rgba(255,255,255,1);
+}
+table.sub_table th,table.sub_table td{
+    width: 10%;
+    min-width: 60px;
+    max-width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    border-top: 1px solid rgb(82, 81, 81);
+    border-right: 1px solid rgb(82, 81, 81);
+    border-left: 1px solid rgb(82, 81, 81);
+    border-collapse: collapse;
+    font-size: 12px;
+}
+table.sub_table td{
+    border-bottom: 1px solid rgb(82, 81, 81);
+    border-top: 1px solid rgb(82, 81, 81);
+    height: 60px;
+}
+table.sub_table th{
+    position: sticky;
+    background: #dcdbe7;
+    top: 0;
+    left: 0;
+    height: 50px;
+}
+table.sub_table th.long,table.sub_table td.long{
+    width: 60%;
+    min-width: 120px;
+    max-width: 150px;
+}
+table.sub_table th.short,table.sub_table td.short{
+    width: 5%;
+    min-width: 30px;
+    max-width: 50px;
+}
+table.sub_table td#comment{
+    text-align: left;
+    padding-left: 5px;
+}
+/* ボタン */
+input.button{
+    width: 200px;
+    margin: 5px 10px 5px 10px;
+    padding: 3px 8px 3px 8px;
+    border-radius: 10px;
+    background: #e2e2e7;
+    color: #555555;
+}
+input.button:hover{
+    background: rgb(102, 102, 110);
+    color: rgb(255, 255, 255);
+    transition: .2s;
+}
+div.frex{
+    width: fit-content;
+    display: flex;
+    margin: 0 auto;
+}
+form{
+    margin: 0;
+}
+
+
+
+

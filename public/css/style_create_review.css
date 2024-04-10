@@ -1,0 +1,94 @@
+/* スクロール用 */
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+}
+div.min-h-screen bg-gray-100 dark:bg-gray-900{
+    margin: 0;
+    padding: 0;
+}
+main{
+    height: 85%;
+    width: 100%;
+    padding: 30px;
+    background-image: url(/book/public/data/image/book3.jpg);
+    /* background-color:rgba(255,255,255,0.4); */
+    background-size:  100% auto;
+    background-repeat: no-repeat;
+    background-position-y:-400px ;
+}
+/* エラーメッセージ */
+#errorMessage{
+    color: #ff6060;
+    font-weight:bold;
+    font-size: 24px;
+    width: fit-content;
+    margin: 0 auto;
+}
+form div{
+    display: flex;
+    margin: 50px 0 50px 0;
+}
+form div.button{
+    width: fit-content;
+    height: fit-content;
+    margin:0 auto;
+}
+form label{
+    width: 250px;
+    text-align: right;
+    vertical-align: middle;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+/* メインテーブル */
+div.main{
+    width: fit-content;
+    margin: 0 auto;
+    padding: 30px;
+    background-color:rgba(0, 0, 0, 0.589);
+    border-radius: 50px;
+}
+/* ボタン */
+input.button{
+    font-size: 20px;
+    width: 200px;
+    margin: 5px 10px 5px 10px;
+    padding: 3px 8px 3px 8px;
+    border-radius: 10px;
+    background: #e2e2e7;
+    color: #555555;
+}
+input.button:hover{
+    background: rgb(102, 102, 110);
+    color: rgb(255, 255, 255);
+    transition: .2s;
+}
+form{
+    height: 50%;
+}
+div.link{
+   width: fit-content;
+   margin: 0 auto;
+}
+.link p{
+    font-size: 20px;
+    width: 200px;
+    padding: 3px 8px 3px 8px;
+    border-radius: 10px;
+    background: #e2e2e7;
+    color: #555555;
+}
+.link p:hover{
+    background: rgb(102, 102, 110);
+    color: rgb(255, 255, 255);
+    transition: .2s;
+}
+
+
+
+
+
