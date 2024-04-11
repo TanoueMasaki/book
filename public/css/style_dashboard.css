@@ -5,6 +5,7 @@ body{
     height: 100%;
 }
 div.min-h-screen bg-gray-100 dark:bg-gray-900{
+    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -50,6 +51,9 @@ div.frex{
 p.top{
     font-family: sans-serif;
     font-size: 35px;
+}
+#end{
+    margin-bottom: 200px;
 }
 
 

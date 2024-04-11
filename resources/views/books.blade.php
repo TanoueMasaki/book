@@ -1,15 +1,17 @@
 <link rel="stylesheet" href="{{ asset('/css/style_books.css') }}">
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('book_list') }}
-        </h2>
+        <div class="header">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('book_list') }}
+            </h2>
+            @if(session('errorMessage')===null)
+            @else
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight" id="errorMessage">{{session('errorMessage')}}</h2>
+            @endif
+        </div>
     </x-slot>
     
-    @if(session('errorMessage')===null)
-    @else
-    <p id="errorMessage">{{session('errorMessage')}}</p>
-    @endif
         <div class="scroll_table">
             @if(Auth::user()-> dep_id===1)
             @elseif(Auth::user()-> dep_id===2)   
@@ -33,9 +35,9 @@
             @endif
             <table class="main_table">  
                 <tr>
-                <th></th>
-                    <th></th>
-                    <th class="short"></th>
+                    <th>書影</th>
+                    <th>評価</th>
+                    <th class="short">ID</th>
                     <th class="long">タイトル</th>
                     <th>著者</th>
                     <th class="long">出版社</th>
@@ -43,6 +45,7 @@
                     <th>ジャンル</th>
                     <th>ISBN</th>
                     <th class="short">価格</th>
+                    <th class="short">数量</th>
                     <th class="short">登録者</th>
                     <th>登録日時</th>
                     <th>更新日時</th>
@@ -84,12 +87,12 @@
                     <td class="long">{{$book->title}}</td>
                     <td>{{$book->author}}</td>
                     <td class="long">{{$book->publisher}}</td>
-                    <td>{{$book->publication_Data}}</td>
+                    <td>{{$book->publication_Date}}</td>
                     <td>{{$book->genre}}</td>
                     <td>{{$book->isbn}}</td>
-                    
                     <td class="short">{{$book->price}}円</td>
-                    <td class="short">{{$book->username}}</td>
+                    <td class="short">{{$book->quantity}}</td>
+                    <td class="short">{{$book->user->name}}</td>
                     <td>{{$book->created_at}}</td>
                     <td>{{$book->updated_at}}</td>
                     <td class="short">
@@ -102,6 +105,6 @@
                 </tr>
                 @endforeach
         </table>
-        </div>
         
+        </div>
     </x-app-layout>

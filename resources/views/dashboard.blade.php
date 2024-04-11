@@ -30,6 +30,6 @@
                 </form>   
                 @endif
             </div>
-        
+            <p id="end"> </p>
     </div>
 </x-app-layout>

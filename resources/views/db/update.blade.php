@@ -37,6 +37,7 @@
                         <th>ジャンル</th>
                         <th class="long">ISBN</th>
                         <th>価格</th>
+                        <th>数量</th>
                         <th class="short">登録者id</th>
                         <th>登録日時</th>
                         <th>更新日時</th>
@@ -56,6 +57,7 @@
                         <td>{{$book->genre}}</td>        
                         <td class="long">{{$book->isbn}}</td>
                         <td>{{$book->price}}</td>
+                        <td>{{$book->quantity}}</td>
                         <td class="short">{{$book->con_id}}</td>
                         <td>{{$book->created_at}}</td>
                         <td>{{$book->updated_at}}</td>
@@ -89,6 +91,7 @@
                         </td>
                         <td class="long"><input type="text" min="0" name="isbn" value="{{$book->isbn}}"></td>
                         <td><input type="number" name="price" value="{{$book->price}}"></td>
+                        <td><input type="number" name="quantity" value="{{$book->quantity}}"></td>
                         <td class="short"><input type="text" name="con_id" value="{{$book->con_id}}"></td>
                         <td></td>
                         <td></td>

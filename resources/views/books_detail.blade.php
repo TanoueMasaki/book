@@ -55,7 +55,7 @@
                 <td class="long">{{$book->title}}</td>
                 <td>{{$book->author}}</td>
                 <td class="long">{{$book->publisher}}</td>
-                <td>{{$book->publication_Data}}</td>
+                <td >{{$book->publication_Date}}</td>
                 <td>{{$book->genre}}</td>
                 <td>{{$book->isbn}}</td>
                 <td class="short">{{$book->price}}円</td>
@@ -87,7 +87,7 @@
                 @foreach($reviews as $book)
                 <tr>
                     @if(Auth::user()-> dep_id===2)
-                    <td class="short"><input type="checkbox" name="checkedId[]" value=<?=$book->id?> ></td>
+                    <td class="short"><input class="checkBoxes" type="checkbox" name="checkedId[]" value=<?=$book->id?>></td>
                     @endif
                     
                     <td>{{$book->user->name}}</td>
@@ -101,7 +101,8 @@
         </div>
         <div class="frex">
                     @if(Auth::user()-> dep_id===2)
-                    <input class="button" id="checkButtonDe" type="submit" name="bookDataDelete" value="削除">
+                    <input type="text" hidden name="isbn" value="{{$book->isbn}}">
+                    <input class="button" id="checkButtonDe" type="submit" name="bookDataDelete" value="削除" onClick="return isCheck()">
                     <input class="button" id="checkButtonRe" type="reset" value="リセット">
                     @endif
                 </form>
@@ -112,4 +113,22 @@
             </form>
         </div>
     </div>
+    <script>
+    // チェックボックスが空ならアラート表示
+    function isCheck() {
+        var arr_checkBoxes = document.getElementsByClassName("checkBoxes");
+        var count = 0;
+        for (var i = 0; i < arr_checkBoxes.length; i++) {
+            if (arr_checkBoxes[i].checked) {
+                count++;
+            }
+        }
+        if (count > 0) {
+            return true;
+        } else {
+            window.alert("項目を1つ以上選択してください。");
+            return false;
+        }
+    }
+    </script>
 </x-app-layout>

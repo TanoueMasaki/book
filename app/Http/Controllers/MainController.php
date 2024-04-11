@@ -55,8 +55,6 @@ class MainController extends Controller
                     ->groupBy('isbn_id')
                     ->get();
         
-                    
-
         $data = [
             'users' => User::all(),
             `departments` => Department::all(),
@@ -64,7 +62,6 @@ class MainController extends Controller
             'isbn' => $request->isbn,
             'rating_avg' => $rating_avg
         ];
-
 
         $books = Book::all()->where('isbn', $request->isbn);
         return view('books_detail',$data)
@@ -98,6 +95,8 @@ class MainController extends Controller
         "isbn" => 'required | integer | digits_between:10,13 | unique:books,isbn',
         "price" => 'integer | min:0'
     ]);
+
+
 
     Book::create([  
         "title" => $request->title,
@@ -215,6 +214,7 @@ class MainController extends Controller
             $books->genre = $request->genre;
             $books->isbn = $request->isbn;
             $books->price = $request->price;
+            $books->quantity = $request->quantity;
             $books->con_id = $request->con_id;  
             $books->save();
             
@@ -334,6 +334,7 @@ class MainController extends Controller
     }
     // レビューデータの削除
     public function deleteReview(Request $request){
+
         $checkedId = $request->checkedId;
         // セッションに$checkedIdを一旦保存しておく
         $request->session()->put('checkedId',$checkedId);

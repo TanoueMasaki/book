@@ -17,7 +17,7 @@ table.main_table{
 table.main_table th,table.main_table td{
     word-break: break-all;
     padding-top: 5px;
-    width: 6%;
+    width: 150px;
     min-width: 60px;
     max-width: 100px;
     font-size: 12px;
@@ -30,6 +30,8 @@ table.main_table th,table.main_table td{
 }
 table.main_table td{
     border-bottom: 1px solid rgb(82, 81, 81);
+    height: 60px;
+    overflow:auto;
 }
 
 table.main_table td{
@@ -42,12 +44,12 @@ table.main_table th{
     left: 0;
 }
 table.main_table th.long,table.main_table td.long{
-    width: 12%;
+    width: 250px;
     min-width: 120px;
     max-width: 150px;
 }
 table.main_table th.short,table.main_table td.short{
-    width: 4%;
+    width: 100px;
     min-width: 30px;
     max-width: 50px;
 }
@@ -59,30 +61,36 @@ table.input_table{
     border-left: 1px solid rgb(82, 81, 81);
     background: #ffffff;
     table-layout: fixed;
+    border-collapse: collapse;
 }
 table.input_table select{
+    overflow: auto;
     font-size: 12px;
-    width: 6%;
+    width: 150px;
     min-width: 60px;
     max-width: 100px;
     text-align: left;
     padding: 0;
     vertical-align: middle;
+    border-collapse: collapse;
 }
 table.input_table td input{
-
-    word-break: break-all;
+    overflow: auto;
+    /* word-break: break-all; */
     border: none;
     text-align: center;
     vertical-align: middle;
     width: 100%;
     font-size: 12px;
+    border-collapse: collapse;
 }
 
 table.input_table td{
-    word-break: break-all;
+    height: 60px;
+    /* word-break: break-all; */
+    overflow: auto;
     padding-top: 5px;
-    width: 6%;
+    width: 150px;
     min-width: 60px;
     max-width: 100px;
     font-size: 12px;
@@ -92,12 +100,12 @@ table.input_table td{
     border-collapse: collapse;
 }
 table.input_table td.long{
-    width: 12%;
+    width: 250px;
     min-width: 120px;
     max-width: 150px;
 }
 table.input_table td.short{
-    width: 4%;
+    width: 100px;
     min-width: 30px;
     max-width: 50px;
 }

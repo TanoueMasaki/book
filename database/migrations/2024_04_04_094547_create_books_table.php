@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('genre');
             $table->BigInteger('isbn')->unique();
             $table->integer('price');
+            $table->integer('quantity');
             $table->unsignedBigInteger('con_id');
             $table->timestamps();
 

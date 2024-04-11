@@ -23,6 +23,7 @@ class BooksTableSeeder extends Seeder
             'genre' => 'コンピュータ(コンピューティング)＆IT(情報技術)',
             'isbn' => 9784800712349,
             'price' => 1980,
+            'quantity' => 1,
             'con_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -35,6 +36,7 @@ class BooksTableSeeder extends Seeder
             'genre' => 'コンピュータ(コンピューティング)＆IT(情報技術)',
             'isbn' => 9784815624255,
             'price' => 1760,
+            'quantity' => 1,
             'con_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -47,6 +49,7 @@ class BooksTableSeeder extends Seeder
             'genre' => '言語、言語学',
             'isbn' => 9784023310650,
             'price' => 890,
+            'quantity' => 1,
             'con_id' => 1,
             'created_at' => now(),
             'updated_at' => now()

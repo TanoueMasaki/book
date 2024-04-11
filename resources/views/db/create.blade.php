@@ -115,6 +115,7 @@ crossorigin="anonymous">
             <p>ISBN(書籍番号)</p>
             @if ($errors->has('isbn'))
                 <li class="errors">{{$errors->first('isbn')}}</li>
+                <li class="errors">数量を変更する場合は書籍一覧の編集から行ってください</li>
             @endif
             <!-- pattern="^[0-9]+$" -->
             <input class="input" type="text" name="isbn" id="isbn" max="20" pattern="^[0-9]+$" value="{{old('isbn')}}">

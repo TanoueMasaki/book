@@ -108,9 +108,9 @@ table td.short{
     <div class="main">
         <h1 id="title">{{ $message }}</h1>
         @if($message==="レビューを更新しました")
-        <p>更新内容</p>
+        
         <table class="main">
-            <tr class="short"><th>おすすめ度</th><th class="long">コメント</th></tr>
+            <tr class="short"><th class="short">おすすめ度</th><th class="long">コメント</th></tr>
             <tr>
                 <td class="short">{{ $rating }}</td>
                 <td class="long">{{ $comment }}</td>

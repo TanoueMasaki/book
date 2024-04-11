@@ -11,7 +11,7 @@ class Book extends Model
     protected $table = 'books';
 
     //データ挿入の許可をするカラムを指定(許可しない設定をする場合は$guardedにする)
-    protected $fillable = ['title','author','publisher','publication_Date','genre','isbn','price','con_id']; 
+    protected $fillable = ['title','author','publisher','publication_Date','genre','isbn','price','quantity','con_id']; 
 
     use HasFactory;
 
