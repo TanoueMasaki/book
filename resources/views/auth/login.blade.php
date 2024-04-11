@@ -44,4 +44,8 @@
             </x-primary-button>
         </div>
     </form>
+    <form action="/book/public" method="post">
+        @csrf
+        <input class="button" type="submit" value="戻る">
+    </form>
 </x-guest-layout>

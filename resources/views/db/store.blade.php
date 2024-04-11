@@ -8,7 +8,7 @@
         background-size:  100% auto;
         background-repeat: no-repeat;
         padding-top: 50px;
-        height: 100%;
+        height: 90%;
         text-align: center;
     }
     table,th,td{
@@ -40,7 +40,7 @@
     }
     .frex input.button{
         padding: 5px 20px 5px 20px;
-        margin: 50px 20px 50px 20px;
+        margin: 50px 20px 10px 20px;
         font-size:24px;
         font-weight:bold;
         width: fit-content;
@@ -54,8 +54,9 @@
     transition: .2s;
 }
 img{
-    width: 300px;
+    width: 200px;
     margin: 0 auto;
+    margin-bottom:30px ;
 }
 
 
@@ -69,7 +70,7 @@ img{
 
 <body>
     <div class="back">
-       
+    <img id="book" src="https://ndlsearch.ndl.go.jp/thumbnail/{{$isbn}}.jpg" alt="NO IMAGE">
         <table >
             <tr><th>書籍名</th><td>{{ $title }}</td></tr>
             <tr><th>作者</th><td>{{ $author }}</td></tr>
@@ -94,7 +95,6 @@ img{
             </form>   
             @endif
         </div>
-        <img class="top" src="{{ asset('/data/image/ghost.png') }}" alt="topImg">
     </div>
 </body>
 
