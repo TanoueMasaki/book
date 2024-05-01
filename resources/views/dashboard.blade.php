@@ -13,18 +13,19 @@
                 </div>
             </div>
         </div>
+            
 
         
         <div class="frex">
             <img class="top" src="{{ asset('/data/image/ghost.png') }}" alt="topImg">
-                <form action="/book/public/books" method="get">
+                <form action="books" method="get">
                     @csrf
                     <input class="button" type="submit" name="books" value="書籍一覧">
                 </form>
                 <!-- dep_idがD002だけ書籍登録画面へのリンクを表示する -->
                 @if(Auth::user()-> dep_id===1)
                 @elseif(Auth::user()-> dep_id===2)
-                <form action="/book/public/db/create" method="get">
+                <form action="diveeeeen.shop/BookManagementSystem/public/db/create" method="get">
                     @csrf
                     <input class="button" type="submit" name="books_registration" value="書籍登録">
                 </form>   

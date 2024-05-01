@@ -1,21 +1,15 @@
-html{
-    height: 100%;
-}
-body{
-    height: 100%;
-}
-div.min-h-screen bg-gray-100 dark:bg-gray-900{
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
 main{
     width: 100%;
-    height: 100%;
     margin: 0 auto;
     text-align: center;
-    background-image: url(/book/public/data/image/book1.JPG);
     background-color:rgba(255,255,255,0.4);
+    background-size:  100% auto;
+    background-repeat: no-repeat;
+}
+div.py-12{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../data/image/book1.jpg);
     background-size:  100% auto;
     background-repeat: no-repeat;
 }

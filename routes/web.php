@@ -15,6 +15,7 @@ use App\Http\Controllers\MainController;
 |
 */
 
+// /diveeeeen.shop/BookManagementSystem/public/にアクセスされたら
 Route::get('/', function () {
     return view('welcome');
 });
